@@ -1,22 +1,28 @@
+import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import HeroBanner from "@/components/HeroBanner";
-import JerseyGrid from "@/components/JerseyGrid";
-import TopSellersCarousel from "@/components/TopSellersCarousel";
-import FeaturedSuppliers from "@/components/FeaturedSuppliers";
-import HowItWorks from "@/components/HowItWorks";
-import Testimonials from "@/components/Testimonials";
+import ProductCarousel from "@/components/ProductCarousel";
+import ShopByCategory from "@/components/ShopByCategory";
+import CurrentSeason from "@/components/CurrentSeason";
+import RetroBanner from "@/components/RetroBanner";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
 const Index = () => (
   <div className="flex min-h-screen flex-col">
+    <AnnouncementBar />
     <Navbar />
     <main className="flex-1">
       <HeroBanner />
-      <JerseyGrid />
-      <TopSellersCarousel />
-      <FeaturedSuppliers />
-      <HowItWorks />
-      <Testimonials />
+      <ProductCarousel title="New Arrivals" />
+      <ShopByCategory />
+      <CurrentSeason />
+      <RetroBanner />
+      <ProductCarousel
+        title="Fans Favourites"
+        filterFn={(j) => j.isTopSeller}
+      />
+      <FAQ />
     </main>
     <Footer />
   </div>
