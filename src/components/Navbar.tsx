@@ -1,83 +1,77 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ShoppingBag } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, Search, ShoppingBag } from "lucide-react";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Browse Jerseys", href: "/jerseys" },
-  { label: "Suppliers", href: "/suppliers" },
-  { label: "How It Works", href: "/#how-it-works" },
+  { label: "New In", href: "/jerseys" },
+  { label: "Football", href: "/jerseys?cat=Football" },
+  { label: "Cricket", href: "/jerseys?cat=Cricket" },
+  { label: "Batch", href: "/jerseys?cat=Batch+Jersey" },
+  { label: "Tournament", href: "/jerseys?cat=Tournament" },
   { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <ShoppingBag className="h-7 w-7 text-primary" />
-          <span className="text-xl font-bold text-foreground">
-            DIU <span className="text-primary">Jersey Hub</span>
+          <ShoppingBag className="h-6 w-6 text-primary" />
+          <span className="text-lg font-extrabold tracking-tight text-foreground">
+            DIU <span className="text-primary">JERSEY HUB</span>
           </span>
         </Link>
 
-        {/* Desktop nav links */}
-        <nav className="hidden items-center gap-6 md:flex">
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               to={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="text-xs font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Desktop auth buttons */}
-        <div className="hidden items-center gap-3 md:flex">
-          <Button variant="ghost" size="sm">Login</Button>
-          <Button variant="outline" size="sm">Register</Button>
-          <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold">
-            Become a Supplier
-          </Button>
-        </div>
+        {/* Right icons */}
+        <div className="flex items-center gap-4">
+          <button className="text-muted-foreground transition-colors hover:text-foreground">
+            <Search className="h-5 w-5" />
+          </button>
+          <button className="text-muted-foreground transition-colors hover:text-foreground">
+            <ShoppingBag className="h-5 w-5" />
+          </button>
 
-        {/* Mobile menu toggle */}
-        <button
-          className="md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+          {/* Mobile toggle */}
+          <button
+            className="lg:hidden text-foreground"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-t bg-background md:hidden">
-          <nav className="container flex flex-col gap-3 py-4">
+        <div className="border-t border-border bg-background lg:hidden">
+          <nav className="container flex flex-col gap-4 py-6">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 to={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-primary"
+                className="text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-foreground"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <hr className="my-2 border-border" />
-            <Button variant="ghost" size="sm" className="justify-start">Login</Button>
-            <Button variant="outline" size="sm" className="justify-start">Register</Button>
-            <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold justify-start">
-              Become a Supplier
-            </Button>
           </nav>
         </div>
       )}
