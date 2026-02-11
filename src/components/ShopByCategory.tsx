@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import catFootball from "@/assets/cat-football.jpg";
-import catCricket from "@/assets/cat-cricket.jpg";
+import catSection from "@/assets/cat-section.jpg";
+import catClub from "@/assets/cat-club.jpg";
 import catBatch from "@/assets/cat-batch.jpg";
 
 const categories = [
-  { label: "Football", image: catFootball, href: "/jerseys?cat=Football" },
-  { label: "Cricket", image: catCricket, href: "/jerseys?cat=Cricket" },
+  { label: "Section", image: catSection, href: "/jerseys?cat=Section" },
+  { label: "Club", image: catClub, href: "/jerseys?cat=Club" },
   { label: "Batch", image: catBatch, href: "/jerseys?cat=Batch+Jersey" },
 ];
 

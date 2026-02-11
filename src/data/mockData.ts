@@ -1,7 +1,13 @@
 // ============================================================
 // MOCK DATA — Sample suppliers, jersey designs, and testimonials
-// This will be replaced with database data in Phase 2
 // ============================================================
+
+import jerseySports11 from "@/assets/jersey-sports11.jpg";
+import jerseyTealPolo from "@/assets/jersey-teal-polo.jpg";
+import jerseyDikaSports from "@/assets/jersey-dika-sports.jpg";
+import jerseyEeeChbd from "@/assets/jersey-eee-chbd.jpg";
+import jerseySweBlue from "@/assets/jersey-swe-blue.jpg";
+import jerseySweGreen from "@/assets/jersey-swe-green.jpg";
 
 export interface Supplier {
   id: string;
@@ -19,7 +25,7 @@ export interface JerseyDesign {
   supplierName: string;
   title: string;
   description: string;
-  category: "Football" | "Cricket" | "Batch Jersey" | "Tournament" | "Departmental";
+  category: "Section" | "Club" | "Batch Jersey" | "Tournament" | "Departmental";
   baseColor: string;
   fabricType: string;
   pricePerPiece: number;
@@ -62,20 +68,20 @@ export const suppliers: Supplier[] = [
   },
   {
     id: "s3",
-    brandName: "UniKit Bangladesh",
+    brandName: "Concept House BD",
     description: "Specializing in university team kits with custom name/number printing. Official supplier for 10+ universities.",
     rating: 4.7,
     designCount: 30,
-    logoUrl: "https://ui-avatars.com/api/?name=UK&background=006b3f&color=fff&size=128&bold=true",
+    logoUrl: "https://ui-avatars.com/api/?name=CH&background=006b3f&color=fff&size=128&bold=true",
     coverImageUrl: "",
   },
   {
     id: "s4",
-    brandName: "GreenLine Jerseys",
+    brandName: "Kapor Sports",
     description: "Eco-friendly fabric options with modern designs. Great for batch and departmental jerseys.",
     rating: 4.3,
     designCount: 12,
-    logoUrl: "https://ui-avatars.com/api/?name=GL&background=2d6a4f&color=fff&size=128&bold=true",
+    logoUrl: "https://ui-avatars.com/api/?name=KS&background=2d6a4f&color=fff&size=128&bold=true",
     coverImageUrl: "",
   },
 ];
@@ -84,57 +90,57 @@ export const suppliers: Supplier[] = [
 export const jerseyDesigns: JerseyDesign[] = [
   {
     id: "j1", supplierId: "s1", supplierName: "JerseyBD Pro",
-    title: "DIU Warriors Football Kit",
-    description: "Bold green and white football jersey with diagonal stripes. Breathable mesh fabric.",
-    category: "Football", baseColor: "Green/White", fabricType: "Polyester Mesh",
+    title: "Sports Jersey 11 — Pink Splash",
+    description: "Bold pink and navy football jersey with splash art design. Breathable mesh fabric.",
+    category: "Club", baseColor: "Pink/Navy", fabricType: "Polyester Mesh",
     pricePerPiece: 520, minOrderQuantity: 15, estimatedDeliveryDays: 7,
-    mainImageUrl: "https://images.unsplash.com/photo-1580087256394-dc5f7e202b59?w=400&h=500&fit=crop",
-    rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["football", "breathable"],
+    mainImageUrl: jerseySports11,
+    rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["club", "breathable"],
   },
   {
-    id: "j2", supplierId: "s2", supplierName: "Dhaka Sports Wear",
-    title: "Classic Cricket Whites",
-    description: "Traditional off-white cricket jersey with green collar and cuffs. UV-protected fabric.",
-    category: "Cricket", baseColor: "Off-White/Green", fabricType: "Dry-Fit Polyester",
-    pricePerPiece: 480, minOrderQuantity: 12, estimatedDeliveryDays: 10,
-    mainImageUrl: "https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?w=400&h=500&fit=crop",
-    rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["cricket", "classic"],
+    id: "j2", supplierId: "s3", supplierName: "Concept House BD",
+    title: "Teal Wave Polo Jersey",
+    description: "Stunning teal polo jersey with abstract wave pattern. Collar design with premium finish.",
+    category: "Section", baseColor: "Teal/White", fabricType: "Dry-Fit Polyester",
+    pricePerPiece: 550, minOrderQuantity: 12, estimatedDeliveryDays: 10,
+    mainImageUrl: jerseyTealPolo,
+    rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["section", "polo"],
   },
   {
-    id: "j3", supplierId: "s1", supplierName: "JerseyBD Pro",
-    title: "SWE Batch '26 Special",
-    description: "Exclusive batch jersey for Software Engineering 2026. Custom gradient design.",
-    category: "Batch Jersey", baseColor: "Navy/Teal", fabricType: "Premium Polyester",
-    pricePerPiece: 550, minOrderQuantity: 20, estimatedDeliveryDays: 8,
-    mainImageUrl: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=500&fit=crop",
-    rating: 4.8, isTopSeller: true, isFeatured: false, tags: ["batch", "custom"],
+    id: "j3", supplierId: "s2", supplierName: "Dhaka Sports Wear",
+    title: "DIKA Sports Player 01",
+    description: "Gray and black gradient jersey with red accents. Perfect for tournament and club wear.",
+    category: "Club", baseColor: "Gray/Black/Red", fabricType: "Premium Polyester",
+    pricePerPiece: 480, minOrderQuantity: 11, estimatedDeliveryDays: 8,
+    mainImageUrl: jerseyDikaSports,
+    rating: 4.8, isTopSeller: true, isFeatured: false, tags: ["club", "tournament"],
   },
   {
-    id: "j4", supplierId: "s3", supplierName: "UniKit Bangladesh",
-    title: "DIU Inter-Dept Tournament Tee",
-    description: "Lightweight tournament jersey with moisture-wicking technology. Available in 8 color combos.",
-    category: "Tournament", baseColor: "Multi-color", fabricType: "Micro-Polyester",
-    pricePerPiece: 450, minOrderQuantity: 10, estimatedDeliveryDays: 5,
-    mainImageUrl: "https://images.unsplash.com/photo-1503341504253-dff4f94032fc?w=400&h=500&fit=crop",
-    rating: 4.5, isTopSeller: false, isFeatured: true, tags: ["tournament", "lightweight"],
+    id: "j4", supplierId: "s3", supplierName: "Concept House BD",
+    title: "EEE Department — Circuit Board",
+    description: "Black and cyan circuit board themed jersey for EEE department. Half sleeve, collar, round neck available.",
+    category: "Section", baseColor: "Black/Cyan", fabricType: "Sublimation Polyester",
+    pricePerPiece: 500, minOrderQuantity: 10, estimatedDeliveryDays: 7,
+    mainImageUrl: jerseyEeeChbd,
+    rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["section", "departmental"],
   },
   {
-    id: "j5", supplierId: "s3", supplierName: "UniKit Bangladesh",
-    title: "EEE Department Official Jersey",
-    description: "Navy blue departmental jersey with embroidered department logo. Collar neck design.",
-    category: "Departmental", baseColor: "Navy Blue", fabricType: "Cotton-Poly Blend",
-    pricePerPiece: 500, minOrderQuantity: 15, estimatedDeliveryDays: 9,
-    mainImageUrl: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=500&fit=crop",
-    rating: 4.7, isTopSeller: true, isFeatured: false, tags: ["departmental", "embroidered"],
+    id: "j5", supplierId: "s4", supplierName: "Kapor Sports",
+    title: "SWE Department — Neon Tech",
+    description: "Software Engineering department jersey with neon blue electric effects. Leaf jacquard fabric.",
+    category: "Section", baseColor: "Black/Neon Blue", fabricType: "Leaf Jacquard",
+    pricePerPiece: 580, minOrderQuantity: 15, estimatedDeliveryDays: 9,
+    mainImageUrl: jerseySweBlue,
+    rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["section", "premium"],
   },
   {
-    id: "j6", supplierId: "s4", supplierName: "GreenLine Jerseys",
-    title: "Eco Cricket Green",
-    description: "Sustainable bamboo-blend cricket jersey. Soft touch, eco-friendly dyes.",
-    category: "Cricket", baseColor: "Forest Green", fabricType: "Bamboo Blend",
-    pricePerPiece: 600, minOrderQuantity: 12, estimatedDeliveryDays: 12,
-    mainImageUrl: "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&h=500&fit=crop",
-    rating: 4.4, isTopSeller: false, isFeatured: false, tags: ["eco", "cricket"],
+    id: "j6", supplierId: "s4", supplierName: "Kapor Sports",
+    title: "SWE Department — Classic Green",
+    description: "Deep green Software Engineering jersey with white accents. Classic design, premium quality.",
+    category: "Section", baseColor: "Dark Green/White", fabricType: "Premium Polyester",
+    pricePerPiece: 550, minOrderQuantity: 12, estimatedDeliveryDays: 8,
+    mainImageUrl: jerseySweGreen,
+    rating: 4.5, isTopSeller: false, isFeatured: true, tags: ["section", "classic"],
   },
   {
     id: "j7", supplierId: "s2", supplierName: "Dhaka Sports Wear",
@@ -147,15 +153,15 @@ export const jerseyDesigns: JerseyDesign[] = [
   },
   {
     id: "j8", supplierId: "s1", supplierName: "JerseyBD Pro",
-    title: "DIU Football League Champion",
-    description: "Premium champion-edition football jersey with gold accents. Sublimation print.",
-    category: "Football", baseColor: "Black/Gold", fabricType: "Premium Sublimation",
+    title: "DIU Club League Champion",
+    description: "Premium champion-edition club jersey with gold accents. Sublimation print.",
+    category: "Club", baseColor: "Black/Gold", fabricType: "Premium Sublimation",
     pricePerPiece: 650, minOrderQuantity: 11, estimatedDeliveryDays: 6,
     mainImageUrl: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop",
-    rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["football", "premium"],
+    rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["club", "premium"],
   },
   {
-    id: "j9", supplierId: "s4", supplierName: "GreenLine Jerseys",
+    id: "j9", supplierId: "s3", supplierName: "Concept House BD",
     title: "Pharmacy Dept Polo Jersey",
     description: "Smart casual polo jersey for Pharmacy department. Embroidered logo on chest.",
     category: "Departmental", baseColor: "White/Green", fabricType: "Pique Cotton",
@@ -164,13 +170,13 @@ export const jerseyDesigns: JerseyDesign[] = [
     rating: 4.2, isTopSeller: false, isFeatured: false, tags: ["departmental", "polo"],
   },
   {
-    id: "j10", supplierId: "s3", supplierName: "UniKit Bangladesh",
+    id: "j10", supplierId: "s1", supplierName: "JerseyBD Pro",
     title: "DIU Spring Tournament Kit",
     description: "Fresh spring-themed tournament kit with pastel accents. Full sublimation.",
     category: "Tournament", baseColor: "White/Pastel Green", fabricType: "Sublimation Polyester",
     pricePerPiece: 490, minOrderQuantity: 10, estimatedDeliveryDays: 7,
     mainImageUrl: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=500&fit=crop",
-    rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["tournament", "spring"],
+    rating: 4.6, isTopSeller: false, isFeatured: false, tags: ["tournament", "spring"],
   },
   {
     id: "j11", supplierId: "s2", supplierName: "Dhaka Sports Wear",
@@ -182,13 +188,13 @@ export const jerseyDesigns: JerseyDesign[] = [
     rating: 4.4, isTopSeller: false, isFeatured: false, tags: ["batch", "v-neck"],
   },
   {
-    id: "j12", supplierId: "s1", supplierName: "JerseyBD Pro",
-    title: "DIU All-Star Cricket Jersey",
-    description: "Premium cricket jersey with raglan sleeves and UV protection. Match-ready quality.",
-    category: "Cricket", baseColor: "Green/Yellow", fabricType: "UV-Shield Polyester",
+    id: "j12", supplierId: "s3", supplierName: "Concept House BD",
+    title: "DIU All-Star Club Jersey",
+    description: "Premium club jersey with raglan sleeves and UV protection. Match-ready quality.",
+    category: "Club", baseColor: "Green/Yellow", fabricType: "UV-Shield Polyester",
     pricePerPiece: 580, minOrderQuantity: 11, estimatedDeliveryDays: 6,
     mainImageUrl: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=500&fit=crop",
-    rating: 4.8, isTopSeller: true, isFeatured: false, tags: ["cricket", "premium", "uv"],
+    rating: 4.8, isTopSeller: true, isFeatured: false, tags: ["club", "premium", "uv"],
   },
 ];
 
@@ -218,5 +224,5 @@ export const testimonials: Testimonial[] = [
 ];
 
 // --- Categories for filter chips ---
-export const categories = ["All", "Football", "Cricket", "Batch Jersey", "Tournament", "Departmental"] as const;
+export const categories = ["All", "Section", "Club", "Batch Jersey", "Tournament", "Departmental"] as const;
 export type Category = (typeof categories)[number];
