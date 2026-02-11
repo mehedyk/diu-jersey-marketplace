@@ -14,7 +14,221 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      cart_items: {
+        Row: {
+          created_at: string
+          id: string
+          product_id: string
+          quantity: number
+          size: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          product_id: string
+          quantity?: number
+          size?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          product_id?: string
+          quantity?: number
+          size?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cart_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      order_items: {
+        Row: {
+          created_at: string
+          id: string
+          order_id: string
+          price_per_piece: number
+          product_id: string
+          quantity: number
+          size: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          order_id: string
+          price_per_piece?: number
+          product_id: string
+          quantity?: number
+          size?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          order_id?: string
+          price_per_piece?: number
+          product_id?: string
+          quantity?: number
+          size?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "order_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          created_at: string
+          id: string
+          notes: string | null
+          payment_method: string
+          payment_status: string
+          phone: string | null
+          shipping_address: string | null
+          status: string
+          total_amount: number
+          transaction_id: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          payment_method?: string
+          payment_status?: string
+          phone?: string | null
+          shipping_address?: string | null
+          status?: string
+          total_amount?: number
+          transaction_id?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          payment_method?: string
+          payment_status?: string
+          phone?: string | null
+          shipping_address?: string | null
+          status?: string
+          total_amount?: number
+          transaction_id?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          base_color: string | null
+          category: string
+          created_at: string
+          description: string | null
+          estimated_delivery_days: number | null
+          fabric_type: string | null
+          id: string
+          is_featured: boolean | null
+          is_top_seller: boolean | null
+          main_image_url: string | null
+          min_order_quantity: number
+          price_per_piece: number
+          rating: number | null
+          supplier_name: string | null
+          tags: string[] | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          base_color?: string | null
+          category?: string
+          created_at?: string
+          description?: string | null
+          estimated_delivery_days?: number | null
+          fabric_type?: string | null
+          id?: string
+          is_featured?: boolean | null
+          is_top_seller?: boolean | null
+          main_image_url?: string | null
+          min_order_quantity?: number
+          price_per_piece?: number
+          rating?: number | null
+          supplier_name?: string | null
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          base_color?: string | null
+          category?: string
+          created_at?: string
+          description?: string | null
+          estimated_delivery_days?: number | null
+          fabric_type?: string | null
+          id?: string
+          is_featured?: boolean | null
+          is_top_seller?: boolean | null
+          main_image_url?: string | null
+          min_order_quantity?: number
+          price_per_piece?: number
+          rating?: number | null
+          supplier_name?: string | null
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          department: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          department?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          department?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
