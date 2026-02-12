@@ -75,24 +75,32 @@ const CartPage = () => {
               ))}
             </div>
 
-            {/* Order Summary */}
+            {/* Order Summary - Foodpanda style */}
             <div className="rounded-xl bg-card border border-border p-6 space-y-4 h-fit lg:sticky lg:top-24">
               <h3 className="text-lg font-bold text-foreground">Order Summary</h3>
-              <div className="flex justify-between text-sm text-muted-foreground">
-                <span>Subtotal</span>
-                <span className="text-foreground font-bold">৳{totalAmount.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between text-sm text-muted-foreground">
-                <span>Delivery</span>
-                <span className="text-foreground">Calculated at checkout</span>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm text-muted-foreground">
+                  <span>Subtotal ({items.length} items)</span>
+                  <span className="text-foreground font-bold">৳{totalAmount.toFixed(0)}</span>
+                </div>
+                <div className="flex justify-between text-sm text-muted-foreground">
+                  <span>Delivery</span>
+                  <span className="text-foreground">Calculated at checkout</span>
+                </div>
+                {totalAmount > 1000 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-primary font-semibold">Savings</span>
+                    <span className="text-primary font-bold">-৳{Math.round(totalAmount * 0.05)}</span>
+                  </div>
+                )}
               </div>
               <hr className="border-border" />
               <div className="flex justify-between text-lg font-bold text-foreground">
                 <span>Total</span>
-                <span className="text-primary">৳{totalAmount.toFixed(2)}</span>
+                <span className="text-primary">৳{totalAmount.toFixed(0)}</span>
               </div>
-              <Link to="/checkout">
-                <Button className="w-full" size="lg">Proceed to Checkout</Button>
+              <Link to="/checkout" className="block">
+                <Button className="w-full font-bold text-sm" size="lg">Go to Checkout</Button>
               </Link>
             </div>
           </div>

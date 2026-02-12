@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Search, ShoppingBag, ShoppingCart, User } from "lucide-react";
+import { Menu, X, Search, ShoppingCart } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/hooks/useCart";
+import UserDropdown from "@/components/UserDropdown";
+import ThemeToggle from "@/components/ThemeToggle";
+import retroImage from "@/assets/retro-banner.jpg";
 
 const navLinks = [
   { label: "New In", href: "/jerseys" },
@@ -20,15 +23,20 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
-      <div className="container flex h-16 items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <ShoppingBag className="h-6 w-6 text-primary" />
-          <span className="text-lg font-extrabold tracking-tight text-foreground">
-            DIU <span className="text-primary">JERSEY HUB</span>
-          </span>
-        </Link>
+      {/* Logo banner with retro image */}
+      <div className="relative h-12 w-full overflow-hidden">
+        <img src={retroImage} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-background/80" />
+        <div className="container relative flex h-full items-center justify-center">
+          <Link to="/" className="flex items-center gap-2">
+            <span className="text-lg font-extrabold tracking-tight text-foreground">
+              DIU <span className="text-primary">JERSEY HUB</span>
+            </span>
+          </Link>
+        </div>
+      </div>
 
+      <div className="container flex h-14 items-center justify-between">
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
@@ -43,7 +51,9 @@ const Navbar = () => {
         </nav>
 
         {/* Right icons */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ml-auto">
+          <ThemeToggle />
+
           <button className="text-muted-foreground transition-colors hover:text-foreground">
             <Search className="h-5 w-5" />
           </button>
@@ -58,17 +68,7 @@ const Navbar = () => {
           </Link>
 
           {user ? (
-            <div className="flex items-center gap-3">
-              <Link to="/profile" className="text-muted-foreground transition-colors hover:text-foreground">
-                <User className="h-5 w-5" />
-              </Link>
-              <button
-                onClick={signOut}
-                className="hidden text-xs font-bold uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground lg:block"
-              >
-                Logout
-              </button>
-            </div>
+            <UserDropdown />
           ) : (
             <Link
               to="/login"

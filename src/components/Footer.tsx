@@ -1,9 +1,18 @@
 import { ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
+import retroImage from "@/assets/retro-banner.jpg";
 
 const Footer = () => (
-  <footer className="border-t border-border bg-secondary" id="contact">
-    <div className="container py-12">
+  <footer className="relative overflow-hidden border-t border-border" id="contact">
+    {/* Background image */}
+    <img
+      src={retroImage}
+      alt=""
+      className="absolute inset-0 h-full w-full object-cover"
+    />
+    <div className="absolute inset-0 bg-background/90 dark:bg-background/95" />
+
+    <div className="container relative py-12">
       <div className="grid gap-8 md:grid-cols-4">
         {/* Brand */}
         <div className="space-y-3">

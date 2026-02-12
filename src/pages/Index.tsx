@@ -4,9 +4,9 @@ import HeroBanner from "@/components/HeroBanner";
 import ProductCarousel from "@/components/ProductCarousel";
 import ShopByCategory from "@/components/ShopByCategory";
 import CurrentSeason from "@/components/CurrentSeason";
-import RetroBanner from "@/components/RetroBanner";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import BottomSignupBanner from "@/components/BottomSignupBanner";
 
 const Index = () => (
   <div className="flex min-h-screen flex-col">
@@ -17,7 +17,6 @@ const Index = () => (
       <ProductCarousel title="New Arrivals" />
       <ShopByCategory />
       <CurrentSeason />
-      <RetroBanner />
       <ProductCarousel
         title="Fans Favourites"
         filterFn={(j) => j.isTopSeller}
@@ -25,6 +24,7 @@ const Index = () => (
       <FAQ />
     </main>
     <Footer />
+    <BottomSignupBanner />
   </div>
 );
 
