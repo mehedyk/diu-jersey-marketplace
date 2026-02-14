@@ -4,15 +4,14 @@ import { Menu, X, Search, ShoppingCart } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/hooks/useCart";
 import UserDropdown from "@/components/UserDropdown";
-import ThemeToggle from "@/components/ThemeToggle";
 import retroImage from "@/assets/retro-banner.jpg";
 
 const navLinks = [
+  { label: "Stores", href: "/stores" },
   { label: "New In", href: "/jerseys" },
   { label: "Section", href: "/jerseys?cat=Section" },
   { label: "Club", href: "/jerseys?cat=Club" },
   { label: "Batch", href: "/jerseys?cat=Batch+Jersey" },
-  { label: "Tournament", href: "/jerseys?cat=Tournament" },
   { label: "About", href: "/#about" },
 ];
 
@@ -52,8 +51,6 @@ const Navbar = () => {
 
         {/* Right icons */}
         <div className="flex items-center gap-4 ml-auto">
-          <ThemeToggle />
-
           <button className="text-muted-foreground transition-colors hover:text-foreground">
             <Search className="h-5 w-5" />
           </button>

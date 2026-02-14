@@ -1,5 +1,5 @@
 // ============================================================
-// MOCK DATA — Sample suppliers, jersey designs, and testimonials
+// MOCK DATA — Sample suppliers, jersey designs, stores, and testimonials
 // ============================================================
 
 import jerseySports11 from "@/assets/jersey-sports11.jpg";
@@ -8,6 +8,16 @@ import jerseyDikaSports from "@/assets/jersey-dika-sports.jpg";
 import jerseyEeeChbd from "@/assets/jersey-eee-chbd.jpg";
 import jerseySweBlue from "@/assets/jersey-swe-blue.jpg";
 import jerseySweGreen from "@/assets/jersey-swe-green.jpg";
+import jerseySaudi from "@/assets/jersey-saudi.jpg";
+import jerseyPortugal from "@/assets/jersey-portugal.jpg";
+import jerseyItaly from "@/assets/jersey-italy.jpg";
+import jerseyBarcelona from "@/assets/jersey-barcelona.jpg";
+import jerseyArsenal from "@/assets/jersey-arsenal.jpg";
+import jerseyBayern from "@/assets/jersey-bayern.jpg";
+import jerseyCollection from "@/assets/jersey-collection.jpg";
+import jerseyArgentina from "@/assets/jersey-argentina.jpg";
+import jerseyWhirlPink from "@/assets/jersey-whirl-pink.jpg";
+import jerseyWhirlBlue from "@/assets/jersey-whirl-blue.jpg";
 
 export interface Supplier {
   id: string;
@@ -23,6 +33,7 @@ export interface JerseyDesign {
   id: string;
   supplierId: string;
   supplierName: string;
+  storeId: string;
   title: string;
   description: string;
   category: "Section" | "Club" | "Batch Jersey" | "Tournament" | "Departmental";
@@ -38,6 +49,17 @@ export interface JerseyDesign {
   tags: string[];
 }
 
+export interface Store {
+  id: string;
+  name: string;
+  description: string;
+  rating: number;
+  deliveryTime: string;
+  coverImageUrl: string;
+  logoUrl: string;
+  jerseyCount: number;
+}
+
 export interface Testimonial {
   id: string;
   name: string;
@@ -46,181 +68,143 @@ export interface Testimonial {
   avatarUrl: string;
 }
 
-// --- Suppliers ---
-export const suppliers: Supplier[] = [
+// --- Stores (Foodpanda-style) ---
+export const stores: Store[] = [
   {
-    id: "s1",
-    brandName: "JerseyBD Pro",
-    description: "Premium sublimation jerseys trusted by 50+ university teams across Bangladesh. Fast delivery and vibrant prints.",
-    rating: 4.8,
-    designCount: 25,
+    id: "store-1", name: "Jersey Champs BD",
+    description: "Premium international jerseys — Saudi, Portugal, Italy & more",
+    rating: 4.9, deliveryTime: "3-5 days", coverImageUrl: jerseyCollection,
+    logoUrl: "https://ui-avatars.com/api/?name=JC&background=006b3f&color=fff&size=128&bold=true",
+    jerseyCount: 4,
+  },
+  {
+    id: "store-2", name: "Jersey Whirl",
+    description: "Born to Win — Custom sublimation jerseys with name & number",
+    rating: 4.8, deliveryTime: "5-7 days", coverImageUrl: jerseyWhirlPink,
+    logoUrl: "https://ui-avatars.com/api/?name=JW&background=d63384&color=fff&size=128&bold=true",
+    jerseyCount: 3,
+  },
+  {
+    id: "store-3", name: "CC Sports Store",
+    description: "Classic club jerseys — Barcelona, Arsenal, Bayern & more",
+    rating: 4.7, deliveryTime: "3-5 days", coverImageUrl: jerseyBarcelona,
+    logoUrl: "https://ui-avatars.com/api/?name=CC&background=1a1a6c&color=fff&size=128&bold=true",
+    jerseyCount: 3,
+  },
+  {
+    id: "store-4", name: "JerseyBD Pro",
+    description: "Premium sublimation jerseys trusted by 50+ university teams",
+    rating: 4.8, deliveryTime: "5-7 days", coverImageUrl: jerseySports11,
     logoUrl: "https://ui-avatars.com/api/?name=JB&background=006b3f&color=fff&size=128&bold=true",
-    coverImageUrl: "",
+    jerseyCount: 3,
   },
   {
-    id: "s2",
-    brandName: "Dhaka Sports Wear",
-    description: "Affordable quality jerseys for clubs and departments. Bulk orders with competitive pricing since 2018.",
-    rating: 4.5,
-    designCount: 18,
+    id: "store-5", name: "Dhaka Sports Wear",
+    description: "Affordable quality jerseys for clubs and departments",
+    rating: 4.5, deliveryTime: "5-8 days", coverImageUrl: jerseyDikaSports,
     logoUrl: "https://ui-avatars.com/api/?name=DS&background=1a1a2e&color=fff&size=128&bold=true",
-    coverImageUrl: "",
+    jerseyCount: 3,
   },
   {
-    id: "s3",
-    brandName: "Concept House BD",
-    description: "Specializing in university team kits with custom name/number printing. Official supplier for 10+ universities.",
-    rating: 4.7,
-    designCount: 30,
+    id: "store-6", name: "Concept House BD",
+    description: "University team kits with custom name/number printing",
+    rating: 4.7, deliveryTime: "7-10 days", coverImageUrl: jerseyEeeChbd,
     logoUrl: "https://ui-avatars.com/api/?name=CH&background=006b3f&color=fff&size=128&bold=true",
-    coverImageUrl: "",
+    jerseyCount: 3,
   },
   {
-    id: "s4",
-    brandName: "Kapor Sports",
-    description: "Eco-friendly fabric options with modern designs. Great for batch and departmental jerseys.",
-    rating: 4.3,
-    designCount: 12,
+    id: "store-7", name: "Kapor Sports",
+    description: "Eco-friendly fabric options with modern designs",
+    rating: 4.3, deliveryTime: "7-9 days", coverImageUrl: jerseySweBlue,
     logoUrl: "https://ui-avatars.com/api/?name=KS&background=2d6a4f&color=fff&size=128&bold=true",
-    coverImageUrl: "",
+    jerseyCount: 2,
+  },
+  {
+    id: "store-8", name: "Argentina Fan Store",
+    description: "Official replicas — Messi, De Paul & national team collection",
+    rating: 4.9, deliveryTime: "3-5 days", coverImageUrl: jerseyArgentina,
+    logoUrl: "https://ui-avatars.com/api/?name=AF&background=75aadb&color=fff&size=128&bold=true",
+    jerseyCount: 2,
+  },
+  {
+    id: "store-9", name: "Euro Classics",
+    description: "Retro & modern European national team jerseys",
+    rating: 4.6, deliveryTime: "5-7 days", coverImageUrl: jerseyItaly,
+    logoUrl: "https://ui-avatars.com/api/?name=EC&background=003399&color=fff&size=128&bold=true",
+    jerseyCount: 2,
+  },
+  {
+    id: "store-10", name: "Middle East Kits",
+    description: "Saudi Arabia & Gulf region official replica jerseys",
+    rating: 4.4, deliveryTime: "5-7 days", coverImageUrl: jerseySaudi,
+    logoUrl: "https://ui-avatars.com/api/?name=MK&background=006c35&color=fff&size=128&bold=true",
+    jerseyCount: 2,
   },
 ];
 
-// --- Jersey Designs ---
+// --- Suppliers ---
+export const suppliers: Supplier[] = [
+  { id: "s1", brandName: "JerseyBD Pro", description: "Premium sublimation jerseys trusted by 50+ university teams across Bangladesh.", rating: 4.8, designCount: 25, logoUrl: "https://ui-avatars.com/api/?name=JB&background=006b3f&color=fff&size=128&bold=true", coverImageUrl: "" },
+  { id: "s2", brandName: "Dhaka Sports Wear", description: "Affordable quality jerseys for clubs and departments.", rating: 4.5, designCount: 18, logoUrl: "https://ui-avatars.com/api/?name=DS&background=1a1a2e&color=fff&size=128&bold=true", coverImageUrl: "" },
+  { id: "s3", brandName: "Concept House BD", description: "University team kits with custom name/number printing.", rating: 4.7, designCount: 30, logoUrl: "https://ui-avatars.com/api/?name=CH&background=006b3f&color=fff&size=128&bold=true", coverImageUrl: "" },
+  { id: "s4", brandName: "Kapor Sports", description: "Eco-friendly fabric options with modern designs.", rating: 4.3, designCount: 12, logoUrl: "https://ui-avatars.com/api/?name=KS&background=2d6a4f&color=fff&size=128&bold=true", coverImageUrl: "" },
+];
+
+// --- Jersey Designs (each assigned to a store) ---
 export const jerseyDesigns: JerseyDesign[] = [
-  {
-    id: "j1", supplierId: "s1", supplierName: "JerseyBD Pro",
-    title: "Sports Jersey 11 — Pink Splash",
-    description: "Bold pink and navy football jersey with splash art design. Breathable mesh fabric.",
-    category: "Club", baseColor: "Pink/Navy", fabricType: "Polyester Mesh",
-    pricePerPiece: 520, minOrderQuantity: 15, estimatedDeliveryDays: 7,
-    mainImageUrl: jerseySports11,
-    rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["club", "breathable"],
-  },
-  {
-    id: "j2", supplierId: "s3", supplierName: "Concept House BD",
-    title: "Teal Wave Polo Jersey",
-    description: "Stunning teal polo jersey with abstract wave pattern. Collar design with premium finish.",
-    category: "Section", baseColor: "Teal/White", fabricType: "Dry-Fit Polyester",
-    pricePerPiece: 550, minOrderQuantity: 12, estimatedDeliveryDays: 10,
-    mainImageUrl: jerseyTealPolo,
-    rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["section", "polo"],
-  },
-  {
-    id: "j3", supplierId: "s2", supplierName: "Dhaka Sports Wear",
-    title: "DIKA Sports Player 01",
-    description: "Gray and black gradient jersey with red accents. Perfect for tournament and club wear.",
-    category: "Club", baseColor: "Gray/Black/Red", fabricType: "Premium Polyester",
-    pricePerPiece: 480, minOrderQuantity: 11, estimatedDeliveryDays: 8,
-    mainImageUrl: jerseyDikaSports,
-    rating: 4.8, isTopSeller: true, isFeatured: false, tags: ["club", "tournament"],
-  },
-  {
-    id: "j4", supplierId: "s3", supplierName: "Concept House BD",
-    title: "EEE Department — Circuit Board",
-    description: "Black and cyan circuit board themed jersey for EEE department. Half sleeve, collar, round neck available.",
-    category: "Section", baseColor: "Black/Cyan", fabricType: "Sublimation Polyester",
-    pricePerPiece: 500, minOrderQuantity: 10, estimatedDeliveryDays: 7,
-    mainImageUrl: jerseyEeeChbd,
-    rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["section", "departmental"],
-  },
-  {
-    id: "j5", supplierId: "s4", supplierName: "Kapor Sports",
-    title: "SWE Department — Neon Tech",
-    description: "Software Engineering department jersey with neon blue electric effects. Leaf jacquard fabric.",
-    category: "Section", baseColor: "Black/Neon Blue", fabricType: "Leaf Jacquard",
-    pricePerPiece: 580, minOrderQuantity: 15, estimatedDeliveryDays: 9,
-    mainImageUrl: jerseySweBlue,
-    rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["section", "premium"],
-  },
-  {
-    id: "j6", supplierId: "s4", supplierName: "Kapor Sports",
-    title: "SWE Department — Classic Green",
-    description: "Deep green Software Engineering jersey with white accents. Classic design, premium quality.",
-    category: "Section", baseColor: "Dark Green/White", fabricType: "Premium Polyester",
-    pricePerPiece: 550, minOrderQuantity: 12, estimatedDeliveryDays: 8,
-    mainImageUrl: jerseySweGreen,
-    rating: 4.5, isTopSeller: false, isFeatured: true, tags: ["section", "classic"],
-  },
-  {
-    id: "j7", supplierId: "s2", supplierName: "Dhaka Sports Wear",
-    title: "CSE Batch '25 Reunion Kit",
-    description: "Maroon and gold batch reunion jersey. Comes with matching shorts option.",
-    category: "Batch Jersey", baseColor: "Maroon/Gold", fabricType: "Polyester",
-    pricePerPiece: 470, minOrderQuantity: 20, estimatedDeliveryDays: 7,
-    mainImageUrl: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&h=500&fit=crop",
-    rating: 4.3, isTopSeller: false, isFeatured: false, tags: ["batch", "reunion"],
-  },
-  {
-    id: "j8", supplierId: "s1", supplierName: "JerseyBD Pro",
-    title: "DIU Club League Champion",
-    description: "Premium champion-edition club jersey with gold accents. Sublimation print.",
-    category: "Club", baseColor: "Black/Gold", fabricType: "Premium Sublimation",
-    pricePerPiece: 650, minOrderQuantity: 11, estimatedDeliveryDays: 6,
-    mainImageUrl: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop",
-    rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["club", "premium"],
-  },
-  {
-    id: "j9", supplierId: "s3", supplierName: "Concept House BD",
-    title: "Pharmacy Dept Polo Jersey",
-    description: "Smart casual polo jersey for Pharmacy department. Embroidered logo on chest.",
-    category: "Departmental", baseColor: "White/Green", fabricType: "Pique Cotton",
-    pricePerPiece: 520, minOrderQuantity: 15, estimatedDeliveryDays: 10,
-    mainImageUrl: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400&h=500&fit=crop",
-    rating: 4.2, isTopSeller: false, isFeatured: false, tags: ["departmental", "polo"],
-  },
-  {
-    id: "j10", supplierId: "s1", supplierName: "JerseyBD Pro",
-    title: "DIU Spring Tournament Kit",
-    description: "Fresh spring-themed tournament kit with pastel accents. Full sublimation.",
-    category: "Tournament", baseColor: "White/Pastel Green", fabricType: "Sublimation Polyester",
-    pricePerPiece: 490, minOrderQuantity: 10, estimatedDeliveryDays: 7,
-    mainImageUrl: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=500&fit=crop",
-    rating: 4.6, isTopSeller: false, isFeatured: false, tags: ["tournament", "spring"],
-  },
-  {
-    id: "j11", supplierId: "s2", supplierName: "Dhaka Sports Wear",
-    title: "BBA Batch '27 V-Neck",
-    description: "Stylish v-neck batch jersey in royal blue. Comfortable for all-day wear.",
-    category: "Batch Jersey", baseColor: "Royal Blue", fabricType: "Combed Cotton",
-    pricePerPiece: 430, minOrderQuantity: 25, estimatedDeliveryDays: 8,
-    mainImageUrl: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=500&fit=crop",
-    rating: 4.4, isTopSeller: false, isFeatured: false, tags: ["batch", "v-neck"],
-  },
-  {
-    id: "j12", supplierId: "s3", supplierName: "Concept House BD",
-    title: "DIU All-Star Club Jersey",
-    description: "Premium club jersey with raglan sleeves and UV protection. Match-ready quality.",
-    category: "Club", baseColor: "Green/Yellow", fabricType: "UV-Shield Polyester",
-    pricePerPiece: 580, minOrderQuantity: 11, estimatedDeliveryDays: 6,
-    mainImageUrl: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=500&fit=crop",
-    rating: 4.8, isTopSeller: true, isFeatured: false, tags: ["club", "premium", "uv"],
-  },
+  // Store 1: Jersey Champs BD
+  { id: "j-saudi", supplierId: "s1", supplierName: "Jersey Champs BD", storeId: "store-1", title: "Saudi Arabia Away Jersey 2026", description: "Green geometric pattern with purple diamond accents. Official replica design.", category: "Club", baseColor: "Green/Purple", fabricType: "Polyester Mesh", pricePerPiece: 750, minOrderQuantity: 1, estimatedDeliveryDays: 5, mainImageUrl: jerseySaudi, rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["national", "saudi"] },
+  { id: "j-portugal", supplierId: "s1", supplierName: "Jersey Champs BD", storeId: "store-1", title: "Portugal Vitinha #23 Third Kit", description: "Black with gold lettering. Premium player edition.", category: "Club", baseColor: "Black/Gold", fabricType: "Premium Polyester", pricePerPiece: 850, minOrderQuantity: 1, estimatedDeliveryDays: 5, mainImageUrl: jerseyPortugal, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["national", "portugal"] },
+  { id: "j-italy", supplierId: "s1", supplierName: "Jersey Champs BD", storeId: "store-1", title: "Italy Retro Away Jersey", description: "White retro design with navy and gold trim. Adidas originals.", category: "Club", baseColor: "White/Navy/Gold", fabricType: "Climacool Polyester", pricePerPiece: 780, minOrderQuantity: 1, estimatedDeliveryDays: 5, mainImageUrl: jerseyItaly, rating: 4.7, isTopSeller: false, isFeatured: true, tags: ["national", "italy", "retro"] },
+  { id: "j-collection", supplierId: "s1", supplierName: "Jersey Champs BD", storeId: "store-1", title: "World Stars Collection Pack", description: "Kimmich, De Bruyne, Messi, Barella — premium player jerseys bundle.", category: "Club", baseColor: "Multi", fabricType: "Premium Polyester", pricePerPiece: 690, minOrderQuantity: 1, estimatedDeliveryDays: 5, mainImageUrl: jerseyCollection, rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["collection", "stars"] },
+
+  // Store 2: Jersey Whirl
+  { id: "j-whirl-pink", supplierId: "s2", supplierName: "Jersey Whirl", storeId: "store-2", title: "Jersey Whirl — Pink Magma", description: "Custom sublimation jersey in pink and black lava pattern. Born to Win series.", category: "Section", baseColor: "Pink/Black", fabricType: "100% Polyester Sublimation", pricePerPiece: 550, minOrderQuantity: 11, estimatedDeliveryDays: 7, mainImageUrl: jerseyWhirlPink, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["custom", "sublimation"] },
+  { id: "j-whirl-blue", supplierId: "s2", supplierName: "Jersey Whirl", storeId: "store-2", title: "Jersey Whirl — Sky Tribal", description: "Custom sublimation jersey in sky blue with tribal pattern. Born to Win series.", category: "Section", baseColor: "Sky Blue/White", fabricType: "100% Polyester Sublimation", pricePerPiece: 550, minOrderQuantity: 11, estimatedDeliveryDays: 7, mainImageUrl: jerseyWhirlBlue, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["custom", "sublimation"] },
+  { id: "j1", supplierId: "s2", supplierName: "Jersey Whirl", storeId: "store-2", title: "Sports Jersey 11 — Pink Splash", description: "Bold pink and navy football jersey with splash art design.", category: "Club", baseColor: "Pink/Navy", fabricType: "Polyester Mesh", pricePerPiece: 520, minOrderQuantity: 15, estimatedDeliveryDays: 7, mainImageUrl: jerseySports11, rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["club", "breathable"] },
+
+  // Store 3: CC Sports Store
+  { id: "j-barcelona", supplierId: "s3", supplierName: "CC Sports Store", storeId: "store-3", title: "FC Barcelona Retro Home Jersey", description: "Classic blaugrana stripes. Nike retro edition.", category: "Club", baseColor: "Maroon/Navy", fabricType: "Premium Polyester", pricePerPiece: 720, minOrderQuantity: 1, estimatedDeliveryDays: 5, mainImageUrl: jerseyBarcelona, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["club", "barcelona", "retro"] },
+  { id: "j-arsenal", supplierId: "s3", supplierName: "CC Sports Store", storeId: "store-3", title: "Arsenal Emirates Away Jersey", description: "White polo jersey with maroon and gold trim. Adidas originals.", category: "Club", baseColor: "White/Maroon", fabricType: "Climacool Polyester", pricePerPiece: 780, minOrderQuantity: 1, estimatedDeliveryDays: 5, mainImageUrl: jerseyArsenal, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["club", "arsenal"] },
+  { id: "j-bayern", supplierId: "s3", supplierName: "CC Sports Store", storeId: "store-3", title: "Bayern Munich Away Jersey 2026", description: "White with pink-red digital camo pattern. Adidas player edition.", category: "Club", baseColor: "White/Pink/Red", fabricType: "Aeroready Polyester", pricePerPiece: 790, minOrderQuantity: 1, estimatedDeliveryDays: 5, mainImageUrl: jerseyBayern, rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["club", "bayern"] },
+
+  // Store 4: JerseyBD Pro
+  { id: "j2", supplierId: "s1", supplierName: "JerseyBD Pro", storeId: "store-4", title: "Teal Wave Polo Jersey", description: "Stunning teal polo jersey with abstract wave pattern.", category: "Section", baseColor: "Teal/White", fabricType: "Dry-Fit Polyester", pricePerPiece: 550, minOrderQuantity: 12, estimatedDeliveryDays: 10, mainImageUrl: jerseyTealPolo, rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["section", "polo"] },
+  { id: "j8", supplierId: "s1", supplierName: "JerseyBD Pro", storeId: "store-4", title: "DIU Club League Champion", description: "Premium champion-edition club jersey with gold accents.", category: "Club", baseColor: "Black/Gold", fabricType: "Premium Sublimation", pricePerPiece: 650, minOrderQuantity: 11, estimatedDeliveryDays: 6, mainImageUrl: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop", rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["club", "premium"] },
+  { id: "j10", supplierId: "s1", supplierName: "JerseyBD Pro", storeId: "store-4", title: "DIU Spring Tournament Kit", description: "Fresh spring-themed tournament kit.", category: "Tournament", baseColor: "White/Pastel Green", fabricType: "Sublimation Polyester", pricePerPiece: 490, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=500&fit=crop", rating: 4.6, isTopSeller: false, isFeatured: false, tags: ["tournament", "spring"] },
+
+  // Store 5: Dhaka Sports Wear
+  { id: "j3", supplierId: "s2", supplierName: "Dhaka Sports Wear", storeId: "store-5", title: "DIKA Sports Player 01", description: "Gray and black gradient jersey with red accents.", category: "Club", baseColor: "Gray/Black/Red", fabricType: "Premium Polyester", pricePerPiece: 480, minOrderQuantity: 11, estimatedDeliveryDays: 8, mainImageUrl: jerseyDikaSports, rating: 4.8, isTopSeller: true, isFeatured: false, tags: ["club", "tournament"] },
+  { id: "j7", supplierId: "s2", supplierName: "Dhaka Sports Wear", storeId: "store-5", title: "CSE Batch '25 Reunion Kit", description: "Maroon and gold batch reunion jersey.", category: "Batch Jersey", baseColor: "Maroon/Gold", fabricType: "Polyester", pricePerPiece: 470, minOrderQuantity: 20, estimatedDeliveryDays: 7, mainImageUrl: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&h=500&fit=crop", rating: 4.3, isTopSeller: false, isFeatured: false, tags: ["batch", "reunion"] },
+  { id: "j11", supplierId: "s2", supplierName: "Dhaka Sports Wear", storeId: "store-5", title: "BBA Batch '27 V-Neck", description: "Stylish v-neck batch jersey in royal blue.", category: "Batch Jersey", baseColor: "Royal Blue", fabricType: "Combed Cotton", pricePerPiece: 430, minOrderQuantity: 25, estimatedDeliveryDays: 8, mainImageUrl: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=500&fit=crop", rating: 4.4, isTopSeller: false, isFeatured: false, tags: ["batch", "v-neck"] },
+
+  // Store 6: Concept House BD
+  { id: "j4", supplierId: "s3", supplierName: "Concept House BD", storeId: "store-6", title: "EEE Department — Circuit Board", description: "Black and cyan circuit board themed jersey for EEE department.", category: "Section", baseColor: "Black/Cyan", fabricType: "Sublimation Polyester", pricePerPiece: 500, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyEeeChbd, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["section", "departmental"] },
+  { id: "j9", supplierId: "s3", supplierName: "Concept House BD", storeId: "store-6", title: "Pharmacy Dept Polo Jersey", description: "Smart casual polo jersey for Pharmacy department.", category: "Departmental", baseColor: "White/Green", fabricType: "Pique Cotton", pricePerPiece: 520, minOrderQuantity: 15, estimatedDeliveryDays: 10, mainImageUrl: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400&h=500&fit=crop", rating: 4.2, isTopSeller: false, isFeatured: false, tags: ["departmental", "polo"] },
+  { id: "j12", supplierId: "s3", supplierName: "Concept House BD", storeId: "store-6", title: "DIU All-Star Club Jersey", description: "Premium club jersey with raglan sleeves and UV protection.", category: "Club", baseColor: "Green/Yellow", fabricType: "UV-Shield Polyester", pricePerPiece: 580, minOrderQuantity: 11, estimatedDeliveryDays: 6, mainImageUrl: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=500&fit=crop", rating: 4.8, isTopSeller: true, isFeatured: false, tags: ["club", "premium", "uv"] },
+
+  // Store 7: Kapor Sports
+  { id: "j5", supplierId: "s4", supplierName: "Kapor Sports", storeId: "store-7", title: "SWE Department — Neon Tech", description: "Software Engineering department jersey with neon blue electric effects.", category: "Section", baseColor: "Black/Neon Blue", fabricType: "Leaf Jacquard", pricePerPiece: 580, minOrderQuantity: 15, estimatedDeliveryDays: 9, mainImageUrl: jerseySweBlue, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["section", "premium"] },
+  { id: "j6", supplierId: "s4", supplierName: "Kapor Sports", storeId: "store-7", title: "SWE Department — Classic Green", description: "Deep green Software Engineering jersey with white accents.", category: "Section", baseColor: "Dark Green/White", fabricType: "Premium Polyester", pricePerPiece: 550, minOrderQuantity: 12, estimatedDeliveryDays: 8, mainImageUrl: jerseySweGreen, rating: 4.5, isTopSeller: false, isFeatured: true, tags: ["section", "classic"] },
+
+  // Store 8: Argentina Fan Store
+  { id: "j-argentina-1", supplierId: "s1", supplierName: "Argentina Fan Store", storeId: "store-8", title: "Argentina Messi #10 Home Jersey", description: "Sky blue and white stripes. Official replica with Messi print.", category: "Club", baseColor: "Sky Blue/White", fabricType: "Premium Polyester", pricePerPiece: 820, minOrderQuantity: 1, estimatedDeliveryDays: 5, mainImageUrl: jerseyArgentina, rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["national", "argentina", "messi"] },
+  { id: "j-argentina-2", supplierId: "s1", supplierName: "Argentina Fan Store", storeId: "store-8", title: "Argentina World Stars Collection", description: "De Paul, Messi & more — full collection available.", category: "Club", baseColor: "Multi", fabricType: "Premium Polyester", pricePerPiece: 750, minOrderQuantity: 1, estimatedDeliveryDays: 5, mainImageUrl: jerseyCollection, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["national", "argentina", "collection"] },
+
+  // Store 9: Euro Classics
+  { id: "j-euro-italy", supplierId: "s3", supplierName: "Euro Classics", storeId: "store-9", title: "Italy Away Retro — Adidas Originals", description: "White retro Italy jersey with intricate weave pattern.", category: "Club", baseColor: "White/Navy", fabricType: "Climacool", pricePerPiece: 780, minOrderQuantity: 1, estimatedDeliveryDays: 7, mainImageUrl: jerseyItaly, rating: 4.7, isTopSeller: false, isFeatured: true, tags: ["retro", "italy"] },
+  { id: "j-euro-portugal", supplierId: "s3", supplierName: "Euro Classics", storeId: "store-9", title: "Portugal Third Kit — Pantera Negra", description: "Black with gold details. Vitinha #23 player edition.", category: "Club", baseColor: "Black/Gold", fabricType: "Dri-Fit", pricePerPiece: 850, minOrderQuantity: 1, estimatedDeliveryDays: 7, mainImageUrl: jerseyPortugal, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["portugal", "player"] },
+
+  // Store 10: Middle East Kits
+  { id: "j-me-saudi", supplierId: "s1", supplierName: "Middle East Kits", storeId: "store-10", title: "Saudi Arabia Home Jersey 2026", description: "Green with purple geometric diamond pattern. Adidas.", category: "Club", baseColor: "Green/Purple", fabricType: "Aeroready", pricePerPiece: 720, minOrderQuantity: 1, estimatedDeliveryDays: 7, mainImageUrl: jerseySaudi, rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["national", "saudi"] },
+  { id: "j-me-saudi-2", supplierId: "s1", supplierName: "Middle East Kits", storeId: "store-10", title: "Saudi Arabia Training Kit", description: "Training edition in dark green. Lightweight and breathable.", category: "Club", baseColor: "Dark Green", fabricType: "Polyester Mesh", pricePerPiece: 650, minOrderQuantity: 1, estimatedDeliveryDays: 7, mainImageUrl: jerseySaudi, rating: 4.5, isTopSeller: false, isFeatured: false, tags: ["national", "saudi", "training"] },
 ];
 
 // --- Testimonials ---
 export const testimonials: Testimonial[] = [
-  {
-    id: "t1",
-    name: "Rafiq Ahmed",
-    department: "SWE Department, DIU",
-    quote: "DIU Jersey Hub made ordering jerseys for our entire batch so easy. We compared 5 suppliers and got the best deal in just 2 days!",
-    avatarUrl: "https://ui-avatars.com/api/?name=RA&background=006b3f&color=fff",
-  },
-  {
-    id: "t2",
-    name: "Fatima Akter",
-    department: "DIU Football Club",
-    quote: "Our football team's jerseys looked absolutely professional. The suppliers on this platform really understand university sports needs.",
-    avatarUrl: "https://ui-avatars.com/api/?name=FA&background=1a1a2e&color=fff",
-  },
-  {
-    id: "t3",
-    name: "Tanvir Hasan",
-    department: "EEE Batch '25",
-    quote: "From design selection to delivery, everything was smooth. We got our batch jerseys exactly as we wanted. Highly recommend!",
-    avatarUrl: "https://ui-avatars.com/api/?name=TH&background=2d6a4f&color=fff",
-  },
+  { id: "t1", name: "Rafiq Ahmed", department: "SWE Department, DIU", quote: "DIU Jersey Hub made ordering jerseys for our entire batch so easy.", avatarUrl: "https://ui-avatars.com/api/?name=RA&background=006b3f&color=fff" },
+  { id: "t2", name: "Fatima Akter", department: "DIU Football Club", quote: "Our football team's jerseys looked absolutely professional.", avatarUrl: "https://ui-avatars.com/api/?name=FA&background=1a1a2e&color=fff" },
+  { id: "t3", name: "Tanvir Hasan", department: "EEE Batch '25", quote: "From design selection to delivery, everything was smooth.", avatarUrl: "https://ui-avatars.com/api/?name=TH&background=2d6a4f&color=fff" },
 ];
 
 // --- Categories for filter chips ---
