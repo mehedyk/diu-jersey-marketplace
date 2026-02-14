@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import HeroBanner from "@/components/HeroBanner";
 import ProductCarousel from "@/components/ProductCarousel";
 import ShopByCategory from "@/components/ShopByCategory";
+import StoresList from "@/components/StoresList";
 import CurrentSeason from "@/components/CurrentSeason";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -14,6 +15,7 @@ const Index = () => (
     <Navbar />
     <main className="flex-1">
       <HeroBanner />
+      <StoresList />
       <ProductCarousel title="New Arrivals" />
       <ShopByCategory />
       <CurrentSeason />

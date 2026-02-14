@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useCart } from "@/hooks/useCart";
-import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -8,25 +7,6 @@ import Footer from "@/components/Footer";
 
 const CartPage = () => {
   const { items, loading, removeFromCart, updateQuantity, totalAmount } = useCart();
-  const { user } = useAuth();
-
-  if (!user) {
-    return (
-      <div className="flex min-h-screen flex-col">
-        <Navbar />
-        <main className="flex flex-1 items-center justify-center">
-          <div className="text-center space-y-4">
-            <ShoppingBag className="mx-auto h-16 w-16 text-muted-foreground" />
-            <h2 className="text-2xl font-bold text-foreground">Please login to view your cart</h2>
-            <Link to="/login">
-              <Button>Login</Button>
-            </Link>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -40,7 +20,7 @@ const CartPage = () => {
           <div className="text-center py-16 space-y-4">
             <ShoppingBag className="mx-auto h-16 w-16 text-muted-foreground" />
             <p className="text-lg text-muted-foreground">Your cart is empty</p>
-            <Link to="/jerseys"><Button>Browse Jerseys</Button></Link>
+            <Link to="/stores"><Button>Browse Stores</Button></Link>
           </div>
         ) : (
           <div className="grid gap-8 lg:grid-cols-3">
@@ -75,7 +55,7 @@ const CartPage = () => {
               ))}
             </div>
 
-            {/* Order Summary - Foodpanda style */}
+            {/* Order Summary */}
             <div className="rounded-xl bg-card border border-border p-6 space-y-4 h-fit lg:sticky lg:top-24">
               <h3 className="text-lg font-bold text-foreground">Order Summary</h3>
               <div className="space-y-2">
