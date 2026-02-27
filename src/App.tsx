@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import { CartProvider } from "@/hooks/useCart";
-import { ThemeProvider } from "@/hooks/useTheme";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import LoginPage from "./pages/LoginPage";
@@ -17,12 +16,16 @@ import JerseysPage from "./pages/JerseysPage";
 import JerseyDetailPage from "./pages/JerseyDetailPage";
 import StoresPage from "./pages/StoresPage";
 import StoreDetailPage from "./pages/StoreDetailPage";
+import OrderSuccessPage from "./pages/OrderSuccessPage";
+import MyOrdersPage from "./pages/MyOrdersPage";
+import OrderDetailPage from "./pages/OrderDetailPage";
+import CustomJerseyPage from "./pages/CustomJerseyPage";
+import MyCustomJerseysPage from "./pages/MyCustomJerseysPage";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
     <TooltipProvider>
       <AuthProvider>
         <CartProvider>
@@ -40,14 +43,17 @@ const App = () => (
               <Route path="/jerseys/:id" element={<JerseyDetailPage />} />
               <Route path="/stores" element={<StoresPage />} />
               <Route path="/stores/:id" element={<StoreDetailPage />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="/order-success" element={<OrderSuccessPage />} />
+              <Route path="/my-orders" element={<MyOrdersPage />} />
+              <Route path="/orders/:id" element={<OrderDetailPage />} />
+              <Route path="/custom-jersey" element={<CustomJerseyPage />} />
+              <Route path="/my-custom-jerseys" element={<MyCustomJerseysPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </CartProvider>
       </AuthProvider>
     </TooltipProvider>
-    </ThemeProvider>
   </QueryClientProvider>
 );
 
