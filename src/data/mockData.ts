@@ -18,6 +18,16 @@ import jerseyCollection from "@/assets/jersey-collection.jpg";
 import jerseyArgentina from "@/assets/jersey-argentina.jpg";
 import jerseyWhirlPink from "@/assets/jersey-whirl-pink.jpg";
 import jerseyWhirlBlue from "@/assets/jersey-whirl-blue.jpg";
+import jerseyNationNavy from "@/assets/jersey-nation-navy.jpg";
+import jerseyNationBlue from "@/assets/jersey-nation-blue.jpg";
+import jerseyNationRed from "@/assets/jersey-nation-red.jpg";
+import jerseyJcuDiamond from "@/assets/jersey-jcu-diamond.jpg";
+import jerseyJcuGeometric from "@/assets/jersey-jcu-geometric.jpg";
+import jerseyJcuTeal from "@/assets/jersey-jcu-teal.jpg";
+import jerseyJcuSwirl from "@/assets/jersey-jcu-swirl.jpg";
+import jerseyJcuPink from "@/assets/jersey-jcu-pink.jpg";
+import jerseyJcuRedgray from "@/assets/jersey-jcu-redgray.jpg";
+import jerseyJcuPurple from "@/assets/jersey-jcu-purple.jpg";
 
 export interface Supplier {
   id: string;
@@ -140,6 +150,20 @@ export const stores: Store[] = [
     logoUrl: "https://ui-avatars.com/api/?name=MK&background=006c35&color=fff&size=128&bold=true",
     jerseyCount: 2,
   },
+  {
+    id: "store-11", name: "Jersey Nation BD",
+    description: "Premium custom polo jerseys with name & number — Min order 10 pcs",
+    rating: 4.8, deliveryTime: "5-7 days", coverImageUrl: jerseyNationNavy,
+    logoUrl: "https://ui-avatars.com/api/?name=JN&background=1a237e&color=ffd600&size=128&bold=true",
+    jerseyCount: 3,
+  },
+  {
+    id: "store-12", name: "Jersey Collector's Unite",
+    description: "Wear Comfort — Premium quality custom jerseys, min order 10 pcs",
+    rating: 4.7, deliveryTime: "5-8 days", coverImageUrl: jerseyJcuDiamond,
+    logoUrl: "https://ui-avatars.com/api/?name=JU&background=0d47a1&color=fff&size=128&bold=true",
+    jerseyCount: 7,
+  },
 ];
 
 // --- Suppliers ---
@@ -148,6 +172,8 @@ export const suppliers: Supplier[] = [
   { id: "s2", brandName: "Dhaka Sports Wear", description: "Affordable quality jerseys for clubs and departments.", rating: 4.5, designCount: 18, logoUrl: "https://ui-avatars.com/api/?name=DS&background=1a1a2e&color=fff&size=128&bold=true", coverImageUrl: "" },
   { id: "s3", brandName: "Concept House BD", description: "University team kits with custom name/number printing.", rating: 4.7, designCount: 30, logoUrl: "https://ui-avatars.com/api/?name=CH&background=006b3f&color=fff&size=128&bold=true", coverImageUrl: "" },
   { id: "s4", brandName: "Kapor Sports", description: "Eco-friendly fabric options with modern designs.", rating: 4.3, designCount: 12, logoUrl: "https://ui-avatars.com/api/?name=KS&background=2d6a4f&color=fff&size=128&bold=true", coverImageUrl: "" },
+  { id: "s5", brandName: "Jersey Nation BD", description: "Premium custom polo jerseys with sublimation printing.", rating: 4.8, designCount: 15, logoUrl: "https://ui-avatars.com/api/?name=JN&background=1a237e&color=ffd600&size=128&bold=true", coverImageUrl: "" },
+  { id: "s6", brandName: "Jersey Collector's Unite", description: "Wear Comfort — Premium quality custom jerseys.", rating: 4.7, designCount: 20, logoUrl: "https://ui-avatars.com/api/?name=JU&background=0d47a1&color=fff&size=128&bold=true", coverImageUrl: "" },
 ];
 
 // --- Jersey Designs (each assigned to a store) ---
@@ -198,6 +224,20 @@ export const jerseyDesigns: JerseyDesign[] = [
   // Store 10: Middle East Kits
   { id: "j-me-saudi", supplierId: "s1", supplierName: "Middle East Kits", storeId: "store-10", title: "Saudi Arabia Home Jersey 2026", description: "Green with purple geometric diamond pattern. Adidas.", category: "Club", baseColor: "Green/Purple", fabricType: "Aeroready", pricePerPiece: 720, minOrderQuantity: 1, estimatedDeliveryDays: 7, mainImageUrl: jerseySaudi, rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["national", "saudi"] },
   { id: "j-me-saudi-2", supplierId: "s1", supplierName: "Middle East Kits", storeId: "store-10", title: "Saudi Arabia Training Kit", description: "Training edition in dark green. Lightweight and breathable.", category: "Club", baseColor: "Dark Green", fabricType: "Polyester Mesh", pricePerPiece: 650, minOrderQuantity: 1, estimatedDeliveryDays: 7, mainImageUrl: jerseySaudi, rating: 4.5, isTopSeller: false, isFeatured: false, tags: ["national", "saudi", "training"] },
+
+  // Store 11: Jersey Nation BD
+  { id: "j-jn-navy", supplierId: "s5", supplierName: "Jersey Nation BD", storeId: "store-11", title: "Navy Gold Polo — Custom Name & Number", description: "Navy blue polo jersey with yellow collar and accents. Sublimation print with custom name and number on back.", category: "Section", baseColor: "Navy/Yellow", fabricType: "100% Polyester Sublimation", pricePerPiece: 520, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyNationNavy, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["custom", "polo", "sublimation"] },
+  { id: "j-jn-blue", supplierId: "s5", supplierName: "Jersey Nation BD", storeId: "store-11", title: "Blue Sports Polo — Cricket Edition", description: "Sky blue sports polo with grey collar. Perfect for cricket and casual sports.", category: "Section", baseColor: "Blue/Grey", fabricType: "100% Polyester Sublimation", pricePerPiece: 500, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyNationBlue, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["custom", "cricket", "polo"] },
+  { id: "j-jn-red", supplierId: "s5", supplierName: "Jersey Nation BD", storeId: "store-11", title: "Red Storm — Bold Geometric", description: "Red and dark navy geometric pattern polo jersey. Bold street-sport design.", category: "Section", baseColor: "Red/Navy", fabricType: "100% Polyester Sublimation", pricePerPiece: 540, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyNationRed, rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["custom", "geometric", "bold"] },
+
+  // Store 12: Jersey Collector's Unite
+  { id: "j-jcu-diamond", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Blue Diamond Pattern Tee", description: "Deep blue with diamond geometric pattern. Premium quality sublimation print.", category: "Section", baseColor: "Blue/Navy", fabricType: "Premium Sublimation", pricePerPiece: 490, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyJcuDiamond, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["custom", "diamond", "premium"] },
+  { id: "j-jcu-geometric", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "White Geometric Abstract", description: "White jersey with colorful geometric abstract art. Navy, green, orange accents.", category: "Section", baseColor: "White/Multi", fabricType: "Premium Sublimation", pricePerPiece: 510, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyJcuGeometric, rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["custom", "abstract", "colorful"] },
+  { id: "j-jcu-teal", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Teal Shatter — Labib Edition", description: "Teal with dark navy angular shatter pattern. Custom name and number available.", category: "Section", baseColor: "Teal/Navy", fabricType: "Premium Sublimation", pricePerPiece: 530, minOrderQuantity: 10, estimatedDeliveryDays: 8, mainImageUrl: jerseyJcuTeal, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["custom", "teal", "shatter"] },
+  { id: "j-jcu-swirl", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Blue Swirl Team Polo", description: "Blue swirl wave polo jersey. Perfect for team events and tournaments.", category: "Section", baseColor: "Blue/Teal", fabricType: "Premium Sublimation", pricePerPiece: 520, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyJcuSwirl, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["custom", "swirl", "polo"] },
+  { id: "j-jcu-pink", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Pink Mandala Polo", description: "Navy polo jersey with pink mandala pattern and pink collar accents.", category: "Section", baseColor: "Navy/Pink", fabricType: "Premium Sublimation", pricePerPiece: 540, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyJcuPink, rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["custom", "mandala", "pink"] },
+  { id: "j-jcu-redgray", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Red & Gray Flame Tee", description: "Dynamic red, gray and white jersey with flame-like swirl patterns.", category: "Section", baseColor: "Red/Gray/White", fabricType: "Premium Sublimation", pricePerPiece: 500, minOrderQuantity: 10, estimatedDeliveryDays: 8, mainImageUrl: jerseyJcuRedgray, rating: 4.5, isTopSeller: false, isFeatured: false, tags: ["custom", "flame", "dynamic"] },
+  { id: "j-jcu-purple", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Purple Diamond Polo", description: "Purple polo jersey with pink diamond crosshatch pattern. Premium quality.", category: "Section", baseColor: "Purple/Pink", fabricType: "Premium Sublimation", pricePerPiece: 510, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyJcuPurple, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["custom", "purple", "diamond"] },
 ];
 
 // --- Testimonials ---

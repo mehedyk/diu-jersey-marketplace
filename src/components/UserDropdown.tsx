@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import { User, ShoppingBag, HelpCircle, LogOut, ChevronDown, ChevronUp } from "lucide-react";
+import { User, ShoppingBag, HelpCircle, LogOut, ChevronDown, ChevronUp, Shirt, Package } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -35,9 +35,21 @@ const UserDropdown = () => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link to="/profile" className="flex items-center gap-3 cursor-pointer">
+          <Link to="/my-orders" className="flex items-center gap-3 cursor-pointer">
             <ShoppingBag className="h-4 w-4 text-muted-foreground" />
-            <span>Orders</span>
+            <span>My Orders</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link to="/my-custom-jerseys" className="flex items-center gap-3 cursor-pointer">
+            <Shirt className="h-4 w-4 text-muted-foreground" />
+            <span>My Custom Jerseys</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link to="/custom-jersey" className="flex items-center gap-3 cursor-pointer">
+            <Package className="h-4 w-4 text-muted-foreground" />
+            <span>Custom Jersey Order</span>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>

@@ -49,6 +49,87 @@ export type Database = {
           },
         ]
       }
+      custom_jersey_requests: {
+        Row: {
+          assigned_supplier_id: string | null
+          created_at: string
+          design_image_url: string | null
+          extra_instructions: string | null
+          id: string
+          jersey_type: string
+          logo_image_url: string | null
+          player_name_number: string | null
+          quantity: number
+          size_details: string | null
+          status: string
+          team_or_club: string | null
+          user_id: string
+        }
+        Insert: {
+          assigned_supplier_id?: string | null
+          created_at?: string
+          design_image_url?: string | null
+          extra_instructions?: string | null
+          id?: string
+          jersey_type: string
+          logo_image_url?: string | null
+          player_name_number?: string | null
+          quantity?: number
+          size_details?: string | null
+          status?: string
+          team_or_club?: string | null
+          user_id: string
+        }
+        Update: {
+          assigned_supplier_id?: string | null
+          created_at?: string
+          design_image_url?: string | null
+          extra_instructions?: string | null
+          id?: string
+          jersey_type?: string
+          logo_image_url?: string | null
+          player_name_number?: string | null
+          quantity?: number
+          size_details?: string | null
+          status?: string
+          team_or_club?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          created_at: string
+          data: Json | null
+          id: string
+          is_read: boolean
+          message: string
+          title: string
+          type: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          data?: Json | null
+          id?: string
+          is_read?: boolean
+          message: string
+          title: string
+          type?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          data?: Json | null
+          id?: string
+          is_read?: boolean
+          message?: string
+          title?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       order_items: {
         Row: {
           created_at: string
@@ -94,9 +175,46 @@ export type Database = {
           },
         ]
       }
+      order_status_history: {
+        Row: {
+          changed_at: string
+          changed_by: string | null
+          id: string
+          note: string | null
+          order_id: string
+          status: string
+        }
+        Insert: {
+          changed_at?: string
+          changed_by?: string | null
+          id?: string
+          note?: string | null
+          order_id: string
+          status: string
+        }
+        Update: {
+          changed_at?: string
+          changed_by?: string | null
+          id?: string
+          note?: string | null
+          order_id?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_status_history_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       orders: {
         Row: {
+          courier_name: string | null
           created_at: string
+          estimated_delivery_date: string | null
           id: string
           notes: string | null
           payment_method: string
@@ -104,13 +222,17 @@ export type Database = {
           phone: string | null
           shipping_address: string | null
           status: string
+          status_note: string | null
           total_amount: number
+          tracking_id: string | null
           transaction_id: string | null
           updated_at: string
           user_id: string
         }
         Insert: {
+          courier_name?: string | null
           created_at?: string
+          estimated_delivery_date?: string | null
           id?: string
           notes?: string | null
           payment_method?: string
@@ -118,13 +240,17 @@ export type Database = {
           phone?: string | null
           shipping_address?: string | null
           status?: string
+          status_note?: string | null
           total_amount?: number
+          tracking_id?: string | null
           transaction_id?: string | null
           updated_at?: string
           user_id: string
         }
         Update: {
+          courier_name?: string | null
           created_at?: string
+          estimated_delivery_date?: string | null
           id?: string
           notes?: string | null
           payment_method?: string
@@ -132,7 +258,9 @@ export type Database = {
           phone?: string | null
           shipping_address?: string | null
           status?: string
+          status_note?: string | null
           total_amount?: number
+          tracking_id?: string | null
           transaction_id?: string | null
           updated_at?: string
           user_id?: string

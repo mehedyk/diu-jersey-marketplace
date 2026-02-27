@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "@/hooks/useCart";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
+import { createNotification } from "@/hooks/useNotifications";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -61,7 +62,7 @@ const CheckoutPage = () => {
     }).select().single();
 
     if (orderError || !order) {
-      toast({ title: "Order failed", description: orderError?.message || "Unknown error", variant: "destructive" });
+      toast({ title: "Order failed", description: orderError?.message || "Something went wrong while placing your order. Please try again.", variant: "destructive" });
       setSubmitting(false);
       return;
     }
@@ -76,11 +77,28 @@ const CheckoutPage = () => {
     }));
 
     await supabase.from("order_items").insert(orderItems);
+
+    // Insert initial status history
+    await supabase.from("order_status_history").insert({
+      order_id: order.id,
+      status: "placed",
+      note: "Order placed by customer",
+    } as any);
+
+    // Create notification
+    await createNotification(
+      user.id,
+      "order_confirmation",
+      "Order placed successfully!",
+      `Your order #${order.id.slice(0, 8).toUpperCase()} has been placed. Track it from My Orders.`,
+      { orderId: order.id, status: "placed" }
+    );
+
     await clearCart();
 
-    toast({ title: "Order placed successfully!", description: `Order #${order.id.slice(0, 8)} created` });
+    toast({ title: "Order placed successfully!", description: `Order #${order.id.slice(0, 8).toUpperCase()} created. You can track it from My Orders.` });
     setSubmitting(false);
-    navigate("/");
+    navigate(`/order-success?orderId=${order.id}`);
   };
 
   if (!user) {
