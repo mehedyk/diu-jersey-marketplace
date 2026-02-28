@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import { User, ShoppingBag, HelpCircle, LogOut, ChevronDown, ChevronUp, Shirt, Package } from "lucide-react";
+import { useRole } from "@/hooks/useRole";
+import { User, ShoppingBag, HelpCircle, LogOut, ChevronDown, ChevronUp, Shirt, Package, LayoutDashboard } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +13,7 @@ import { useState } from "react";
 
 const UserDropdown = () => {
   const { user, signOut } = useAuth();
+  const { isAdmin, isSupplier } = useRole();
   const [open, setOpen] = useState(false);
 
   if (!user) return null;
@@ -28,6 +30,25 @@ const UserDropdown = () => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56 bg-popover border-border">
+        {/* Role-based dashboard links */}
+        {isAdmin && (
+          <DropdownMenuItem asChild>
+            <Link to="/admin/dashboard" className="flex items-center gap-3 cursor-pointer">
+              <LayoutDashboard className="h-4 w-4 text-primary" />
+              <span className="font-semibold text-primary">Admin Dashboard</span>
+            </Link>
+          </DropdownMenuItem>
+        )}
+        {isSupplier && (
+          <DropdownMenuItem asChild>
+            <Link to="/supplier/dashboard" className="flex items-center gap-3 cursor-pointer">
+              <LayoutDashboard className="h-4 w-4 text-primary" />
+              <span className="font-semibold text-primary">Supplier Dashboard</span>
+            </Link>
+          </DropdownMenuItem>
+        )}
+        {(isAdmin || isSupplier) && <DropdownMenuSeparator className="bg-border" />}
+
         <DropdownMenuItem asChild>
           <Link to="/profile" className="flex items-center gap-3 cursor-pointer">
             <User className="h-4 w-4 text-muted-foreground" />
