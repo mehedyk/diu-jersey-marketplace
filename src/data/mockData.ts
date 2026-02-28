@@ -18,6 +18,8 @@ import jerseyCollection from "@/assets/jersey-collection.jpg";
 import jerseyArgentina from "@/assets/jersey-argentina.jpg";
 import jerseyWhirlPink from "@/assets/jersey-whirl-pink.jpg";
 import jerseyWhirlBlue from "@/assets/jersey-whirl-blue.jpg";
+import jerseyWhirlOrange from "@/assets/jersey-whirl-orange.jpg";
+import jerseyWhirlMaroon from "@/assets/jersey-whirl-maroon.jpg";
 import jerseyNationNavy from "@/assets/jersey-nation-navy.jpg";
 import jerseyNationBlue from "@/assets/jersey-nation-blue.jpg";
 import jerseyNationRed from "@/assets/jersey-nation-red.jpg";
@@ -28,6 +30,10 @@ import jerseyJcuSwirl from "@/assets/jersey-jcu-swirl.jpg";
 import jerseyJcuPink from "@/assets/jersey-jcu-pink.jpg";
 import jerseyJcuRedgray from "@/assets/jersey-jcu-redgray.jpg";
 import jerseyJcuPurple from "@/assets/jersey-jcu-purple.jpg";
+import jerseyJcuGreen from "@/assets/jersey-jcu-green.jpg";
+import jerseyJcuBluePattern from "@/assets/jersey-jcu-blue-pattern.jpg";
+import jerseyTailorBlue from "@/assets/jersey-tailor-blue.jpg";
+import jerseyTailorPurple from "@/assets/jersey-tailor-purple.jpg";
 
 export interface Supplier {
   id: string;
@@ -90,9 +96,9 @@ export const stores: Store[] = [
   {
     id: "store-2", name: "Jersey Whirl",
     description: "Born to Win — Custom sublimation jerseys with name & number",
-    rating: 4.8, deliveryTime: "5-7 days", coverImageUrl: jerseyWhirlPink,
+    rating: 4.8, deliveryTime: "5-7 days", coverImageUrl: jerseyWhirlOrange,
     logoUrl: "https://ui-avatars.com/api/?name=JW&background=d63384&color=fff&size=128&bold=true",
-    jerseyCount: 3,
+    jerseyCount: 5,
   },
   {
     id: "store-3", name: "CC Sports Store",
@@ -160,9 +166,16 @@ export const stores: Store[] = [
   {
     id: "store-12", name: "Jersey Collector's Unite",
     description: "Wear Comfort — Premium quality custom jerseys, min order 10 pcs",
-    rating: 4.7, deliveryTime: "5-8 days", coverImageUrl: jerseyJcuDiamond,
+    rating: 4.7, deliveryTime: "5-8 days", coverImageUrl: jerseyJcuGreen,
     logoUrl: "https://ui-avatars.com/api/?name=JU&background=0d47a1&color=fff&size=128&bold=true",
-    jerseyCount: 7,
+    jerseyCount: 9,
+  },
+  {
+    id: "store-13", name: "Jersey Tailor BD",
+    description: "Wholesale & Retail — Custom jersey polo & T-shirt with sublimation",
+    rating: 4.6, deliveryTime: "5-8 days", coverImageUrl: jerseyTailorBlue,
+    logoUrl: "https://ui-avatars.com/api/?name=JT&background=1565c0&color=fff&size=128&bold=true",
+    jerseyCount: 2,
   },
 ];
 
@@ -174,6 +187,7 @@ export const suppliers: Supplier[] = [
   { id: "s4", brandName: "Kapor Sports", description: "Eco-friendly fabric options with modern designs.", rating: 4.3, designCount: 12, logoUrl: "https://ui-avatars.com/api/?name=KS&background=2d6a4f&color=fff&size=128&bold=true", coverImageUrl: "" },
   { id: "s5", brandName: "Jersey Nation BD", description: "Premium custom polo jerseys with sublimation printing.", rating: 4.8, designCount: 15, logoUrl: "https://ui-avatars.com/api/?name=JN&background=1a237e&color=ffd600&size=128&bold=true", coverImageUrl: "" },
   { id: "s6", brandName: "Jersey Collector's Unite", description: "Wear Comfort — Premium quality custom jerseys.", rating: 4.7, designCount: 20, logoUrl: "https://ui-avatars.com/api/?name=JU&background=0d47a1&color=fff&size=128&bold=true", coverImageUrl: "" },
+  { id: "s7", brandName: "Jersey Tailor BD", description: "Custom jersey polo & T-shirt — Wholesale & Retail.", rating: 4.6, designCount: 10, logoUrl: "https://ui-avatars.com/api/?name=JT&background=1565c0&color=fff&size=128&bold=true", coverImageUrl: "" },
 ];
 
 // --- Jersey Designs (each assigned to a store) ---
@@ -184,9 +198,11 @@ export const jerseyDesigns: JerseyDesign[] = [
   { id: "j-italy", supplierId: "s1", supplierName: "Jersey Champs BD", storeId: "store-1", title: "Italy Retro Away Jersey", description: "White retro design with navy and gold trim. Adidas originals.", category: "Club", baseColor: "White/Navy/Gold", fabricType: "Climacool Polyester", pricePerPiece: 780, minOrderQuantity: 1, estimatedDeliveryDays: 5, mainImageUrl: jerseyItaly, rating: 4.7, isTopSeller: false, isFeatured: true, tags: ["national", "italy", "retro"] },
   { id: "j-collection", supplierId: "s1", supplierName: "Jersey Champs BD", storeId: "store-1", title: "World Stars Collection Pack", description: "Kimmich, De Bruyne, Messi, Barella — premium player jerseys bundle.", category: "Club", baseColor: "Multi", fabricType: "Premium Polyester", pricePerPiece: 690, minOrderQuantity: 1, estimatedDeliveryDays: 5, mainImageUrl: jerseyCollection, rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["collection", "stars"] },
 
-  // Store 2: Jersey Whirl
+  // Store 2: Jersey Whirl (now with orange + maroon images)
   { id: "j-whirl-pink", supplierId: "s2", supplierName: "Jersey Whirl", storeId: "store-2", title: "Jersey Whirl — Pink Magma", description: "Custom sublimation jersey in pink and black lava pattern. Born to Win series.", category: "Section", baseColor: "Pink/Black", fabricType: "100% Polyester Sublimation", pricePerPiece: 550, minOrderQuantity: 11, estimatedDeliveryDays: 7, mainImageUrl: jerseyWhirlPink, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["custom", "sublimation"] },
   { id: "j-whirl-blue", supplierId: "s2", supplierName: "Jersey Whirl", storeId: "store-2", title: "Jersey Whirl — Sky Tribal", description: "Custom sublimation jersey in sky blue with tribal pattern. Born to Win series.", category: "Section", baseColor: "Sky Blue/White", fabricType: "100% Polyester Sublimation", pricePerPiece: 550, minOrderQuantity: 11, estimatedDeliveryDays: 7, mainImageUrl: jerseyWhirlBlue, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["custom", "sublimation"] },
+  { id: "j-whirl-orange", supplierId: "s2", supplierName: "Jersey Whirl", storeId: "store-2", title: "Jersey Whirl — Orange Splash", description: "Navy and orange splash pattern polo jersey with custom name & number. Born to Win series.", category: "Section", baseColor: "Navy/Orange", fabricType: "100% Polyester Sublimation", pricePerPiece: 560, minOrderQuantity: 11, estimatedDeliveryDays: 7, mainImageUrl: jerseyWhirlOrange, rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["custom", "sublimation", "polo"] },
+  { id: "j-whirl-maroon", supplierId: "s2", supplierName: "Jersey Whirl", storeId: "store-2", title: "Jersey Whirl — Maroon Lightning", description: "Maroon and pink jersey with white lightning accents. Born to Win series.", category: "Section", baseColor: "Maroon/Pink", fabricType: "100% Polyester Sublimation", pricePerPiece: 560, minOrderQuantity: 11, estimatedDeliveryDays: 7, mainImageUrl: jerseyWhirlMaroon, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["custom", "sublimation", "lightning"] },
   { id: "j1", supplierId: "s2", supplierName: "Jersey Whirl", storeId: "store-2", title: "Sports Jersey 11 — Pink Splash", description: "Bold pink and navy football jersey with splash art design.", category: "Club", baseColor: "Pink/Navy", fabricType: "Polyester Mesh", pricePerPiece: 520, minOrderQuantity: 15, estimatedDeliveryDays: 7, mainImageUrl: jerseySports11, rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["club", "breathable"] },
 
   // Store 3: CC Sports Store
@@ -196,18 +212,18 @@ export const jerseyDesigns: JerseyDesign[] = [
 
   // Store 4: JerseyBD Pro
   { id: "j2", supplierId: "s1", supplierName: "JerseyBD Pro", storeId: "store-4", title: "Teal Wave Polo Jersey", description: "Stunning teal polo jersey with abstract wave pattern.", category: "Section", baseColor: "Teal/White", fabricType: "Dry-Fit Polyester", pricePerPiece: 550, minOrderQuantity: 12, estimatedDeliveryDays: 10, mainImageUrl: jerseyTealPolo, rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["section", "polo"] },
-  { id: "j8", supplierId: "s1", supplierName: "JerseyBD Pro", storeId: "store-4", title: "DIU Club League Champion", description: "Premium champion-edition club jersey with gold accents.", category: "Club", baseColor: "Black/Gold", fabricType: "Premium Sublimation", pricePerPiece: 650, minOrderQuantity: 11, estimatedDeliveryDays: 6, mainImageUrl: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop", rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["club", "premium"] },
-  { id: "j10", supplierId: "s1", supplierName: "JerseyBD Pro", storeId: "store-4", title: "DIU Spring Tournament Kit", description: "Fresh spring-themed tournament kit.", category: "Tournament", baseColor: "White/Pastel Green", fabricType: "Sublimation Polyester", pricePerPiece: 490, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=500&fit=crop", rating: 4.6, isTopSeller: false, isFeatured: false, tags: ["tournament", "spring"] },
+  { id: "j8", supplierId: "s1", supplierName: "JerseyBD Pro", storeId: "store-4", title: "DIU Club League Champion", description: "Premium champion-edition club jersey with gold accents.", category: "Club", baseColor: "Black/Gold", fabricType: "Premium Sublimation", pricePerPiece: 650, minOrderQuantity: 11, estimatedDeliveryDays: 6, mainImageUrl: jerseyTailorPurple, rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["club", "premium"] },
+  { id: "j10", supplierId: "s1", supplierName: "JerseyBD Pro", storeId: "store-4", title: "DIU Spring Tournament Kit", description: "Fresh spring-themed tournament kit.", category: "Tournament", baseColor: "White/Pastel Green", fabricType: "Sublimation Polyester", pricePerPiece: 490, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyTailorBlue, rating: 4.6, isTopSeller: false, isFeatured: false, tags: ["tournament", "spring"] },
 
   // Store 5: Dhaka Sports Wear
   { id: "j3", supplierId: "s2", supplierName: "Dhaka Sports Wear", storeId: "store-5", title: "DIKA Sports Player 01", description: "Gray and black gradient jersey with red accents.", category: "Club", baseColor: "Gray/Black/Red", fabricType: "Premium Polyester", pricePerPiece: 480, minOrderQuantity: 11, estimatedDeliveryDays: 8, mainImageUrl: jerseyDikaSports, rating: 4.8, isTopSeller: true, isFeatured: false, tags: ["club", "tournament"] },
-  { id: "j7", supplierId: "s2", supplierName: "Dhaka Sports Wear", storeId: "store-5", title: "CSE Batch '25 Reunion Kit", description: "Maroon and gold batch reunion jersey.", category: "Batch Jersey", baseColor: "Maroon/Gold", fabricType: "Polyester", pricePerPiece: 470, minOrderQuantity: 20, estimatedDeliveryDays: 7, mainImageUrl: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&h=500&fit=crop", rating: 4.3, isTopSeller: false, isFeatured: false, tags: ["batch", "reunion"] },
-  { id: "j11", supplierId: "s2", supplierName: "Dhaka Sports Wear", storeId: "store-5", title: "BBA Batch '27 V-Neck", description: "Stylish v-neck batch jersey in royal blue.", category: "Batch Jersey", baseColor: "Royal Blue", fabricType: "Combed Cotton", pricePerPiece: 430, minOrderQuantity: 25, estimatedDeliveryDays: 8, mainImageUrl: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=500&fit=crop", rating: 4.4, isTopSeller: false, isFeatured: false, tags: ["batch", "v-neck"] },
+  { id: "j7", supplierId: "s2", supplierName: "Dhaka Sports Wear", storeId: "store-5", title: "CSE Batch '25 Reunion Kit", description: "Maroon and gold batch reunion jersey.", category: "Batch Jersey", baseColor: "Maroon/Gold", fabricType: "Polyester", pricePerPiece: 470, minOrderQuantity: 20, estimatedDeliveryDays: 7, mainImageUrl: jerseyWhirlMaroon, rating: 4.3, isTopSeller: false, isFeatured: false, tags: ["batch", "reunion"] },
+  { id: "j11", supplierId: "s2", supplierName: "Dhaka Sports Wear", storeId: "store-5", title: "BBA Batch '27 V-Neck", description: "Stylish v-neck batch jersey in royal blue.", category: "Batch Jersey", baseColor: "Royal Blue", fabricType: "Combed Cotton", pricePerPiece: 430, minOrderQuantity: 25, estimatedDeliveryDays: 8, mainImageUrl: jerseyJcuBluePattern, rating: 4.4, isTopSeller: false, isFeatured: false, tags: ["batch", "v-neck"] },
 
   // Store 6: Concept House BD
   { id: "j4", supplierId: "s3", supplierName: "Concept House BD", storeId: "store-6", title: "EEE Department — Circuit Board", description: "Black and cyan circuit board themed jersey for EEE department.", category: "Section", baseColor: "Black/Cyan", fabricType: "Sublimation Polyester", pricePerPiece: 500, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyEeeChbd, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["section", "departmental"] },
-  { id: "j9", supplierId: "s3", supplierName: "Concept House BD", storeId: "store-6", title: "Pharmacy Dept Polo Jersey", description: "Smart casual polo jersey for Pharmacy department.", category: "Departmental", baseColor: "White/Green", fabricType: "Pique Cotton", pricePerPiece: 520, minOrderQuantity: 15, estimatedDeliveryDays: 10, mainImageUrl: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400&h=500&fit=crop", rating: 4.2, isTopSeller: false, isFeatured: false, tags: ["departmental", "polo"] },
-  { id: "j12", supplierId: "s3", supplierName: "Concept House BD", storeId: "store-6", title: "DIU All-Star Club Jersey", description: "Premium club jersey with raglan sleeves and UV protection.", category: "Club", baseColor: "Green/Yellow", fabricType: "UV-Shield Polyester", pricePerPiece: 580, minOrderQuantity: 11, estimatedDeliveryDays: 6, mainImageUrl: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=500&fit=crop", rating: 4.8, isTopSeller: true, isFeatured: false, tags: ["club", "premium", "uv"] },
+  { id: "j9", supplierId: "s3", supplierName: "Concept House BD", storeId: "store-6", title: "Pharmacy Dept Polo Jersey", description: "Smart casual polo jersey for Pharmacy department.", category: "Departmental", baseColor: "White/Green", fabricType: "Pique Cotton", pricePerPiece: 520, minOrderQuantity: 15, estimatedDeliveryDays: 10, mainImageUrl: jerseyTealPolo, rating: 4.2, isTopSeller: false, isFeatured: false, tags: ["departmental", "polo"] },
+  { id: "j12", supplierId: "s3", supplierName: "Concept House BD", storeId: "store-6", title: "DIU All-Star Club Jersey", description: "Premium club jersey with raglan sleeves and UV protection.", category: "Club", baseColor: "Green/Yellow", fabricType: "UV-Shield Polyester", pricePerPiece: 580, minOrderQuantity: 11, estimatedDeliveryDays: 6, mainImageUrl: jerseyJcuGreen, rating: 4.8, isTopSeller: true, isFeatured: false, tags: ["club", "premium", "uv"] },
 
   // Store 7: Kapor Sports
   { id: "j5", supplierId: "s4", supplierName: "Kapor Sports", storeId: "store-7", title: "SWE Department — Neon Tech", description: "Software Engineering department jersey with neon blue electric effects.", category: "Section", baseColor: "Black/Neon Blue", fabricType: "Leaf Jacquard", pricePerPiece: 580, minOrderQuantity: 15, estimatedDeliveryDays: 9, mainImageUrl: jerseySweBlue, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["section", "premium"] },
@@ -230,7 +246,7 @@ export const jerseyDesigns: JerseyDesign[] = [
   { id: "j-jn-blue", supplierId: "s5", supplierName: "Jersey Nation BD", storeId: "store-11", title: "Blue Sports Polo — Cricket Edition", description: "Sky blue sports polo with grey collar. Perfect for cricket and casual sports.", category: "Section", baseColor: "Blue/Grey", fabricType: "100% Polyester Sublimation", pricePerPiece: 500, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyNationBlue, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["custom", "cricket", "polo"] },
   { id: "j-jn-red", supplierId: "s5", supplierName: "Jersey Nation BD", storeId: "store-11", title: "Red Storm — Bold Geometric", description: "Red and dark navy geometric pattern polo jersey. Bold street-sport design.", category: "Section", baseColor: "Red/Navy", fabricType: "100% Polyester Sublimation", pricePerPiece: 540, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyNationRed, rating: 4.9, isTopSeller: true, isFeatured: true, tags: ["custom", "geometric", "bold"] },
 
-  // Store 12: Jersey Collector's Unite
+  // Store 12: Jersey Collector's Unite (with new green + blue pattern images)
   { id: "j-jcu-diamond", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Blue Diamond Pattern Tee", description: "Deep blue with diamond geometric pattern. Premium quality sublimation print.", category: "Section", baseColor: "Blue/Navy", fabricType: "Premium Sublimation", pricePerPiece: 490, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyJcuDiamond, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["custom", "diamond", "premium"] },
   { id: "j-jcu-geometric", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "White Geometric Abstract", description: "White jersey with colorful geometric abstract art. Navy, green, orange accents.", category: "Section", baseColor: "White/Multi", fabricType: "Premium Sublimation", pricePerPiece: 510, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyJcuGeometric, rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["custom", "abstract", "colorful"] },
   { id: "j-jcu-teal", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Teal Shatter — Labib Edition", description: "Teal with dark navy angular shatter pattern. Custom name and number available.", category: "Section", baseColor: "Teal/Navy", fabricType: "Premium Sublimation", pricePerPiece: 530, minOrderQuantity: 10, estimatedDeliveryDays: 8, mainImageUrl: jerseyJcuTeal, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["custom", "teal", "shatter"] },
@@ -238,6 +254,12 @@ export const jerseyDesigns: JerseyDesign[] = [
   { id: "j-jcu-pink", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Pink Mandala Polo", description: "Navy polo jersey with pink mandala pattern and pink collar accents.", category: "Section", baseColor: "Navy/Pink", fabricType: "Premium Sublimation", pricePerPiece: 540, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyJcuPink, rating: 4.6, isTopSeller: false, isFeatured: true, tags: ["custom", "mandala", "pink"] },
   { id: "j-jcu-redgray", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Red & Gray Flame Tee", description: "Dynamic red, gray and white jersey with flame-like swirl patterns.", category: "Section", baseColor: "Red/Gray/White", fabricType: "Premium Sublimation", pricePerPiece: 500, minOrderQuantity: 10, estimatedDeliveryDays: 8, mainImageUrl: jerseyJcuRedgray, rating: 4.5, isTopSeller: false, isFeatured: false, tags: ["custom", "flame", "dynamic"] },
   { id: "j-jcu-purple", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Purple Diamond Polo", description: "Purple polo jersey with pink diamond crosshatch pattern. Premium quality.", category: "Section", baseColor: "Purple/Pink", fabricType: "Premium Sublimation", pricePerPiece: 510, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyJcuPurple, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["custom", "purple", "diamond"] },
+  { id: "j-jcu-green", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Teal Heritage — Sayem Edition", description: "Teal green with orange geometric heritage pattern. Custom name & number.", category: "Section", baseColor: "Teal/Orange", fabricType: "Premium Sublimation", pricePerPiece: 530, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyJcuGreen, rating: 4.8, isTopSeller: true, isFeatured: true, tags: ["custom", "heritage", "teal"] },
+  { id: "j-jcu-bluepattern", supplierId: "s6", supplierName: "Jersey Collector's Unite", storeId: "store-12", title: "Blue Diamond Splash Tee", description: "Deep blue with diamond pattern splash design. Premium quality fabric.", category: "Section", baseColor: "Blue/Navy", fabricType: "Premium Sublimation", pricePerPiece: 500, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyJcuBluePattern, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["custom", "diamond", "splash"] },
+
+  // Store 13: Jersey Tailor BD (new store with uploaded images)
+  { id: "j-tailor-blue", supplierId: "s7", supplierName: "Jersey Tailor BD", storeId: "store-13", title: "Cricket Thunder — Blue & Gold", description: "Royal blue polo jersey with golden flame accents. Custom sublimation with name & number. Model M-214.", category: "Section", baseColor: "Blue/Gold", fabricType: "100% Polyester Sublimation", pricePerPiece: 550, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyTailorBlue, rating: 4.7, isTopSeller: true, isFeatured: true, tags: ["custom", "cricket", "polo"] },
+  { id: "j-tailor-purple", supplierId: "s7", supplierName: "Jersey Tailor BD", storeId: "store-13", title: "Purple Checkmate Polo", description: "Purple polo with white checkered pattern and sleek white collar. Custom sublimation. Model M-220.", category: "Section", baseColor: "Purple/White", fabricType: "100% Polyester Sublimation", pricePerPiece: 550, minOrderQuantity: 10, estimatedDeliveryDays: 7, mainImageUrl: jerseyTailorPurple, rating: 4.6, isTopSeller: true, isFeatured: true, tags: ["custom", "purple", "checkered"] },
 ];
 
 // --- Testimonials ---
