@@ -21,7 +21,7 @@ const Navbar = () => {
   const { cartCount } = useCart();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-[hsl(222,47%,4%)]">
       {/* Logo banner with retro image */}
       <div className="relative h-12 w-full overflow-hidden">
         <img src={retroImage} alt="" className="absolute inset-0 h-full w-full object-cover" />
