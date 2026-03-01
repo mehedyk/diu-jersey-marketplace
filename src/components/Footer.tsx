@@ -10,7 +10,7 @@ const Footer = () => (
       alt=""
       className="absolute inset-0 h-full w-full object-cover"
     />
-    <div className="absolute inset-0 bg-background/90 dark:bg-background/95" />
+    <div className="absolute inset-0 bg-background/95" />
 
     <div className="container relative py-12">
       <div className="grid gap-8 md:grid-cols-4">
