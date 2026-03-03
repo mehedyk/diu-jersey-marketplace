@@ -6,6 +6,7 @@ import ShopByCategory from "@/components/ShopByCategory";
 import StoresList from "@/components/StoresList";
 import CurrentSeason from "@/components/CurrentSeason";
 import FAQ from "@/components/FAQ";
+import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import BottomSignupBanner from "@/components/BottomSignupBanner";
 
@@ -23,6 +24,7 @@ const Index = () => (
         title="Fans Favourites"
         filterFn={(j) => j.isTopSeller}
       />
+      <AboutSection />
       <FAQ />
     </main>
     <Footer />

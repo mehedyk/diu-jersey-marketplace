@@ -30,6 +30,8 @@ import AdminUsers from "./pages/admin/AdminUsers";
 import SupplierDashboard from "./pages/supplier/SupplierDashboard";
 import SupplierOrders from "./pages/supplier/SupplierOrders";
 import SupplierProducts from "./pages/supplier/SupplierProducts";
+import SupplierMessages from "./pages/supplier/SupplierMessages";
+import ConversationPage from "./pages/ConversationPage";
 
 const queryClient = new QueryClient();
 
@@ -69,6 +71,9 @@ const App = () => (
                 <Route path="/supplier/dashboard" element={<ProtectedRoute allowedRoles={["supplier"]}><SupplierDashboard /></ProtectedRoute>} />
                 <Route path="/supplier/orders" element={<ProtectedRoute allowedRoles={["supplier"]}><SupplierOrders /></ProtectedRoute>} />
                 <Route path="/supplier/products" element={<ProtectedRoute allowedRoles={["supplier"]}><SupplierProducts /></ProtectedRoute>} />
+                <Route path="/supplier/messages" element={<ProtectedRoute allowedRoles={["supplier"]}><SupplierMessages /></ProtectedRoute>} />
+
+                <Route path="/conversation/:id" element={<ConversationPage />} />
 
                 <Route path="*" element={<NotFound />} />
               </Routes>

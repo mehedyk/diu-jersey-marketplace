@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Copy, ArrowLeft, Truck, Calendar, Clock } from "lucide-react";
+import { Copy, ArrowLeft, Truck, Calendar, Clock, MessageSquare } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 const statusColors: Record<string, string> = {
@@ -100,6 +100,40 @@ const OrderDetailPage = () => {
                 </div>
               )}
               {order.status_note && <p className="text-sm text-muted-foreground italic">Note: {order.status_note}</p>}
+
+              {/* Message Supplier button */}
+              <Button
+                onClick={async () => {
+                  if (!user) return;
+                  // Check for existing conversation
+                  const { data: existing } = await supabase
+                    .from("conversations")
+                    .select("id")
+                    .eq("order_id", order.id)
+                    .eq("buyer_id", user.id)
+                    .maybeSingle();
+
+                  if (existing) {
+                    navigate(`/conversation/${existing.id}`);
+                  } else {
+                    // Create new conversation — supplier_id is a placeholder; in production map from order
+                    const { data: newConv } = await supabase
+                      .from("conversations")
+                      .insert({
+                        order_id: order.id,
+                        buyer_id: user.id,
+                        supplier_id: user.id, // fallback — will be supplier's user_id when orders have supplier mapping
+                      })
+                      .select("id")
+                      .single();
+                    if (newConv) navigate(`/conversation/${newConv.id}`);
+                  }
+                }}
+                className="w-full"
+              >
+                <MessageSquare className="h-4 w-4 mr-2" />
+                Message Supplier
+              </Button>
             </div>
 
             {/* Order Items */}
