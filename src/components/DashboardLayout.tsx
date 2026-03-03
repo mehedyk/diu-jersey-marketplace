@@ -9,6 +9,7 @@ import {
   Store,
   LogOut,
   ChevronLeft,
+  MessageSquare,
 } from "lucide-react";
 
 interface DashboardLayoutProps {
@@ -26,6 +27,7 @@ const supplierLinks = [
   { label: "Dashboard", href: "/supplier/dashboard", icon: LayoutDashboard },
   { label: "Orders", href: "/supplier/orders", icon: ShoppingBag },
   { label: "Products", href: "/supplier/products", icon: Package },
+  { label: "Messages", href: "/supplier/messages", icon: MessageSquare },
 ];
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {

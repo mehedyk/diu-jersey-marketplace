@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Search, ShoppingCart } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/hooks/useCart";
 import UserDropdown from "@/components/UserDropdown";
+import SearchDialog from "@/components/SearchDialog";
 import retroImage from "@/assets/retro-banner.jpg";
 
 const navLinks = [
@@ -17,8 +18,18 @@ const navLinks = [
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const { user, signOut } = useAuth();
   const { cartCount } = useCart();
+
+  // Keyboard shortcut Ctrl+K
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); setSearchOpen(true); }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-[hsl(222,47%,4%)]">
@@ -51,9 +62,10 @@ const Navbar = () => {
 
         {/* Right icons */}
         <div className="flex items-center gap-4 ml-auto">
-          <button className="text-muted-foreground transition-colors hover:text-foreground">
+          <button onClick={() => setSearchOpen(true)} className="text-muted-foreground transition-colors hover:text-foreground">
             <Search className="h-5 w-5" />
           </button>
+          <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
 
           <Link to="/cart" className="relative text-muted-foreground transition-colors hover:text-foreground">
             <ShoppingCart className="h-5 w-5" />
