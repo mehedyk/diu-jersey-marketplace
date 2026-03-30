@@ -1,73 +1,111 @@
-# Welcome to your Lovable project
+# 🎽 DIU Jersey Hub
 
-## Project info
+**The all-in-one jersey marketplace for Daffodil International University** — browse designs, place custom orders, and manage suppliers, all in one place.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+🔗 **Live:** [diu-jersey-marketplace.vercel.app](https://diu-jersey-marketplace.vercel.app)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+### 🛍️ For Buyers (Students & Clubs)
+- **Browse & Discover** — Explore a full catalog of jersey designs with category filters (Football, Cricket, Batch, Club, Tournament, Departmental) and a search bar
+- **Jersey Detail Pages** — View fabric type, price per piece, min order quantity, estimated delivery, ratings, and full supplier info before ordering
+- **Add to Cart & Checkout** — Cart management with size selection, quantity control, and a smooth checkout flow supporting Cash on Delivery and bKash
+- **Custom Jersey Requests** — Submit a fully custom jersey order — specify type, team name, player names & numbers, size breakdown, quantity, and upload your own design or logo
+- **Order Tracking** — Track every order through its lifecycle (Pending → Processing → Shipped → Delivered) with courier name, tracking ID, and status history timeline
+- **Messaging** — Chat directly with the supplier assigned to your order through a built-in conversation system
+- **Notifications** — Real-time in-app notifications for order status changes and updates
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### 🏪 For Suppliers
+- **Supplier Dashboard** — Overview stats: total products listed, incoming orders, and pending requests at a glance
+- **Product Management** — Create, edit, and delete jersey listings with images, pricing, categories, fabric info, and tags
+- **Order Management** — View and manage all incoming orders; update status as orders progress
+- **Messaging** — Respond to buyer queries directly from the supplier messages panel
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🔐 For Admins
+- **Admin Dashboard** — Platform-wide stats: total users, suppliers, orders, and revenue
+- **Order Oversight** — Full visibility into all orders across the platform with the ability to update statuses, assign couriers, and add tracking info
+- **Supplier Management** — Review and manage all registered suppliers
+- **User Management** — View all registered users and manage roles
 
-**Use your preferred IDE**
+### 🧱 Platform
+- **Role-Based Access Control** — Three distinct roles (Customer, Supplier, Admin) with protected routes and Supabase RLS enforcing data isolation at the database level
+- **Authentication** — Secure email/password auth via Supabase; profiles and roles auto-created on signup via database triggers
+- **Responsive Design** — Fully mobile-friendly across all pages
+- **Storage** — Jersey design and logo uploads stored in Supabase Storage
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🖥️ Tech Stack
 
-Follow these steps:
+| Layer | Technology |
+|---|---|
+| Frontend | React 18 + Vite + TypeScript |
+| Styling | Tailwind CSS + shadcn/ui |
+| Backend | Supabase (Auth, Database, Storage) |
+| State / Data | TanStack Query (React Query) |
+| Forms | React Hook Form + Zod |
+| Routing | React Router v6 |
+| Deployment | Vercel |
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🗃️ Database Schema (Overview)
 
-# Step 3: Install the necessary dependencies.
-npm i
+```
+profiles         — user info (name, phone, department)
+user_roles       — role assignment (customer / supplier / admin)
+products         — jersey listings
+cart_items       — per-user cart
+orders           — order records with payment & shipping info
+order_items      — line items per order
+order_status_history — full status change log per order
+custom_jersey_requests — custom design submissions
+notifications    — per-user notification feed
+conversations    — buyer ↔ supplier chat threads (per order)
+messages         — individual messages in a conversation
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+All tables have Row Level Security enabled.
+
+---
+
+## 🚀 Local Setup
+
+```bash
+git clone https://github.com/Fahim1168/diu-jersey-marketplace.git
+cd diu-jersey-marketplace
+npm install
+```
+
+Create a `.env` file:
+```
+VITE_SUPABASE_URL=https://your-project-id.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+```
+
+Run migrations in Supabase SQL Editor (in order from `supabase/migrations/`), then:
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+To make yourself admin after registering:
+```sql
+UPDATE public.user_roles
+SET role = 'admin'
+WHERE user_id = (SELECT id FROM auth.users WHERE email = 'your@email.com');
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 👨‍💻 Credits
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+**Original concept, design, and primary development by [Fahim Muntasir Tuhin](https://github.com/Fahim1168)** — built as a final year project at Daffodil International University, Department of Software Engineering.
 
-## What technologies are used for this project?
+Deployment setup and Supabase integration by [S.M. Mehedy Kawser](https://github.com/mehedyk).
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+> *A final year project — Daffodil International University, Dept. of Software Engineering*
